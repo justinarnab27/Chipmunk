@@ -1,12 +1,13 @@
 package org.example.Instructions;
 
+import lombok.NonNull;
 import org.example.ProgramState;
 
 import static org.example.Constants.REGISTER_I;
 
 public class Display {
     private Display() {}
-    public static void execute(int X, int Y, int N, ProgramState programState) {
+    public static void execute(@NonNull final int X, @NonNull final int Y, @NonNull final int N, @NonNull final ProgramState programState) {
         /**
          * Draws the screen.
          * It modifies the display matrix

@@ -1,8 +1,11 @@
 package org.example;
 
+import java.net.URI;
+
 public class Main {
     //TODO: Change many of the print statements to logs
     public static void main(String[] args) throws Exception {
+        java.awt.Desktop.getDesktop().browse(URI.create("https://www.google.com"));
         SourceReader sc = new SourceReader();
         byte[] array = sc.read("");
         System.out.println("Code length (in bytes) : " + array.length);

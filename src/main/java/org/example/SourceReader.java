@@ -2,9 +2,7 @@ package org.example;
 
 import lombok.NonNull;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -15,7 +13,8 @@ public class SourceReader {
          * Takes a binary file as input (inputFile) and returns
          * an array of bytes
          */
-        inputFile = "/Users/arnab/Downloads/IBM Logo.ch8";
+        //IBM Logo.ch8
+        inputFile = "/Users/arnab/Downloads/test_opcode.ch8";
         try {
             byte[] array = Files.readAllBytes(Paths.get(inputFile));
             return array;

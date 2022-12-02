@@ -6,6 +6,10 @@ import org.example.Instructions.Display;
 import org.example.Instructions.Jump;
 import org.example.Instructions.SetIndex;
 import org.example.Instructions.SetToNN;
+import org.example.Instructions.Skip3;
+import org.example.Instructions.Skip4;
+import org.example.Instructions.Skip5;
+import org.example.Instructions.Skip9;
 
 public class NibbleExtractor {
     /**
@@ -82,13 +86,16 @@ public class NibbleExtractor {
                 System.out.println("Subroutines");
                 break;
             case 0x3:
-                System.out.println("Skip");
+                System.out.println("Skip3");
+                Skip3.execute(nibbles[1], Utility.combineTwoNibbles(nibbles[2], nibbles[3]), programState);
                 break;
             case 0x4:
-                System.out.println("Skip");
+                System.out.println("Skip4");
+                Skip4.execute(nibbles[1], Utility.combineTwoNibbles(nibbles[2], nibbles[3]), programState);
                 break;
             case 0x5:
-                System.out.println("Skip");
+                System.out.println("Skip5");
+                Skip5.execute(nibbles[1], nibbles[2], programState);
                 break;
             case 0x6:
                 System.out.println("Set");
@@ -132,7 +139,8 @@ public class NibbleExtractor {
                 }
                 break;
             case 0x9:
-                System.out.println("Skip");
+                System.out.println("Skip9");
+                Skip9.execute(nibbles[1], nibbles[2], programState);
                 break;
             case 0xA:
                 System.out.println("Set index");

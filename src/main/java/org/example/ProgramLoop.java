@@ -8,10 +8,10 @@ public class ProgramLoop {
     }
 
     public void run() throws Exception {
-        boolean sleepBetweenInstructions = true;  // TODO: Should be moved to console args map
+        boolean sleepBetweenInstructions = false;  // TODO: Should be moved to console args map
         System.out.println("Started Running the Program...");
         System.out.println("Creating Program State...");
-        //TODO: Replace with dependency injection
+        // TODO: Replace with dependency injection
         ProgramState programState = new ProgramState(this.programSource);
         NibbleExtractor nibbleExtractor = new NibbleExtractor();
         int MAX_ITER = 100;  // Program stops after MAX_ITER iterations
