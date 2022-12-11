@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import lombok.Getter;
 import lombok.NonNull;
 
 
@@ -21,6 +22,8 @@ public class DisplayCanvas extends JPanel {
     private static final int RECT = 15;   // Size of each pixel
     private static int width = WIDTH_IN_PIXELS * RECT;
     private static int height = HEIGHT_IN_PIXELS * RECT;
+
+    @Getter
     private int[][] displayMatrix = new int[HEIGHT_IN_PIXELS][WIDTH_IN_PIXELS];
     
     protected void paintComponent(Graphics g) {
@@ -41,7 +44,7 @@ public class DisplayCanvas extends JPanel {
 
     public void createAndShowGui() {
         JFrame frame = new JFrame("Chipmunk");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.getContentPane().add(this);
         frame.setSize(new Dimension(width, height));
@@ -57,6 +60,28 @@ public class DisplayCanvas extends JPanel {
             System.out.print("\n");
         }
     }
+
+    public String getDisplayMatrixAsString() {
+        //Gets the display matrix as string
+        String s = "";
+        for (int[] row : this.displayMatrix) {
+            for (int val : row) {
+                s += val + " ";
+            }
+            s += "\n";
+        }
+        return s;
+    }
+
+//    public void printDisplayMatrix() {
+//        //Prints the display matrix
+//        for (int[] row : this.displayMatrix) {
+//            for (int val : row) {
+//                System.out.print(val);
+//            }
+//            System.out.print("\n");
+//        }
+//    }
 
     public int getDisplayMatrixPixel(@NonNull final int r, @NonNull final int c) {
         return displayMatrix[r][c];

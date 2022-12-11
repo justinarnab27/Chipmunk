@@ -1,15 +1,4 @@
 #canvas {
     background-color: red;
     border: 5px solid black;
-    
-    /* position: relative;
-    top: 200px; */
 }
-
-/* function foo(e) {
-    console.log(e.clientX - rect.left, e.clientY - rect.top)
-    
-  }
-  var canvas = document.getElementById('canvas')
-  var rect = canvas.getBoundingClientRect()
-  canvas.addEventListener('mousemove',foo) */

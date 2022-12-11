@@ -12,7 +12,7 @@ public class ProgramLoop {
         System.out.println("Started Running the Program...");
         System.out.println("Creating Program State...");
         // TODO: Replace with dependency injection
-        ProgramState programState = new ProgramState(this.programSource);
+        ProgramState programState = new ProgramState(this.programSource, false);
         NibbleExtractor nibbleExtractor = new NibbleExtractor();
         int MAX_ITER = 100;  // Program stops after MAX_ITER iterations
         while(MAX_ITER > 0) {

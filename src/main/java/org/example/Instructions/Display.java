@@ -50,7 +50,7 @@ public class Display {
             }
         }
         programState.setRegister(0xF, VFlag ? 1 : 0);   // Stores VFlag in VF register
-        programState.printDisplayMatrix();
+//        programState.printDisplayMatrix();
         programState.incrementCounter();
         programState.updateScreen();
     }

@@ -20,13 +20,15 @@ public class ProgramState {
     private Memory memory;
     private DisplayCanvas displayCanvas;
 
-    public ProgramState(@NonNull final byte[] source) {
+    public ProgramState(@NonNull final byte[] source, boolean debugMode) {
         this.programCounter = Constants.PC_START;   // PC starts at 0x200 in memory
         this.registers = new Registers();
         this.memory = new Memory();
         this.memory.loadProgram(source);      // Loads the program in memory from 0x200 onwards
         this.displayCanvas = new DisplayCanvas();
-        SwingUtilities.invokeLater(() -> this.displayCanvas.createAndShowGui());    // Creates gui
+        if (!debugMode) {
+            SwingUtilities.invokeLater(() -> this.displayCanvas.createAndShowGui());    // Creates gui
+        }
         //TODO: Also needs stack
     }
 
@@ -52,6 +54,10 @@ public class ProgramState {
         this.registers.printRegisters();
     }
 
+    public String getDisplayMatrixAsString() {
+        return displayCanvas.getDisplayMatrixAsString();
+    }
+
     public Instruction getNextInstruction() {
         // Fetches the next instruction to execute
         int firstByte = this.memory.getAddress(this.programCounter);
@@ -65,6 +71,10 @@ public class ProgramState {
 
     public void printDisplayMatrix() {
         this.displayCanvas.printDisplayMatrix();
+    }
+
+    public int[][] getDisplayMatrix() {
+        return this.displayCanvas.getDisplayMatrix();
     }
 
     public int getDisplayMatrixPixel(int r, int c) {

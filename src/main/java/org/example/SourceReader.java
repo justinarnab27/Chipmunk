@@ -14,7 +14,7 @@ public class SourceReader {
          * an array of bytes
          */
         //IBM Logo.ch8
-        inputFile = "/Users/arnab/Downloads/test_opcode.ch8";
+        inputFile = "/Users/arnab/Downloads/IBM Logo.ch8";
         try {
             byte[] array = Files.readAllBytes(Paths.get(inputFile));
             return array;
