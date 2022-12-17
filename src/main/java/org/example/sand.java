@@ -1,22 +1,21 @@
 package org.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+
 public class sand {
-    public static void main(String[] args) {
-//        ArrayList<Integer> arr = new ArrayList<>();
-//        char c = 'A';
-//        String s  = "";
-//        for (int i = 0; i < 8; ++i) {
-//            s += c + ": " + 5 + "    ";
-//            c += 1;
-//        }
-//        s += "I: " + 5;
-//        System.out.println(s);
-        ArrayList<Character> arr = (ArrayList<Character>) Arrays.asList('g', 'h', 'i');
-        System.out.println(arr);
+    public static void main(String[] args) throws IOException {
+//        System.out.println("Arnab\\nBala");
+        ObjectMapper objectMapper = new ObjectMapper();
+        sandClass sand_class = new sandClass();
+        objectMapper.writeValue(new File("/Users/arnab/Downloads/car.json"), sand_class);
+
     }
 }

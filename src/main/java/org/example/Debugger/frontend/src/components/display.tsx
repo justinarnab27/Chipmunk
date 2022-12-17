@@ -37,14 +37,7 @@ const Display = () => {
         displayMatrix.current = arr;
         updateDisplayMatrix();
     }
-    const getAndUpdateDisplay = () => {
-        fetch("http://localhost:8080/")
-                .then((json) => {
-                    json.text()
-                        .then(t => {
-                            updateDisplay(t);
-                        })});
-    }
+    
     useEffect(() => {var arr: number[][] = new Array(height);
         for (let i = 0; i < arr.length; ++i) {
             arr[i] = new Array(width).fill(0);
@@ -53,13 +46,7 @@ const Display = () => {
         updateDisplayMatrix();
     }, [])
 
-    useEffect(() => {
-        setInterval(
-            () => getAndUpdateDisplay(),
-            500
-          );
-          
-    })
+    
   return (
     <div>
         <canvas id="canvas" width ={width * pixelSize} height={height * pixelSize} ref={canvasRef}></canvas>

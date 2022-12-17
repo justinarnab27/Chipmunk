@@ -1,5 +1,6 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -19,11 +20,14 @@ public class DisplayCanvas extends JPanel {
      * current state of the display.
      * The paintComponent draws the screen using this matrix.
      */
+//    @JsonIgnore
     private static final int RECT = 15;   // Size of each pixel
+//    @JsonIgnore
     private static int width = WIDTH_IN_PIXELS * RECT;
+//    @JsonIgnore
     private static int height = HEIGHT_IN_PIXELS * RECT;
 
-    @Getter
+//    @Getter
     private int[][] displayMatrix = new int[HEIGHT_IN_PIXELS][WIDTH_IN_PIXELS];
     
     protected void paintComponent(Graphics g) {

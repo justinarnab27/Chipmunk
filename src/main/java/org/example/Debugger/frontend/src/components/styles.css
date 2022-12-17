@@ -1,4 +1,91 @@
+@font-face {
+    font-family: source-code-pro;
+    src: url(https://fonts.gstatic.com/s/sourcecodepro/v22/HI_SiYsKILxRpg3hIP6sJ7fM7PqlPevWnsUnxg.woff2);
+}
+
 #canvas {
     background-color: red;
     border: 5px solid black;
+}
+
+.code-container {
+    /* resize: both; */
+    /* height: 70vh; */
+    /* overflow: hidden; */
+    /* resize: both; */
+    flex: 1;
+}
+
+.buttons {
+    /* background-color: red; */
+    display: flex;
+    justify-content: flex-start;
+    margin: 6px 9px;
+}
+
+.buttons label {
+    font-family: source-code-pro;
+    margin: 0 10px;
+    font-size: 15px;
+    /* background-color: black; */
+    /* color: white; */
+    border: none;
+    text-transform: uppercase;
+}
+
+.code {
+    /* background-color: red; */
+    border: 2px solid black;
+    height: 70vh;
+    /* height: 80%; */
+    /* resize: both; */
+    overflow-y: scroll;
+    /* width: st; */
+}
+
+.code ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: source-code-pro;
+}
+
+.code li {
+    /* background-color: yellow; */
+    /* border: 1px solid blue; */
+    padding: 3px 0px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    display: flex;
+    font-size: 15px;
+}
+
+.code li.selected-line {
+    background-color: aquamarine;
+}
+
+.code li.header {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: normal;
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
+    background-color: pink;
+}
+
+.code li .index {
+    /* background-color: red; */
+    flex: 1;
+    letter-spacing: normal;
+}
+
+.code li .text {
+    /* background-color: aqua; */
+    flex: 2;
+}
+
+.data {
+    background-color: aqua;
+    flex:1;
 }

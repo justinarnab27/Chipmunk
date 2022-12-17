@@ -1,10 +1,11 @@
 package org.example.Debugger;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import org.example.Instruction;
 import org.example.NibbleExtractor;
 import org.example.ProgramState;
-import org.json.JSONObject;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,6 +23,10 @@ public class DebuggerMain {
         builder.headless(false).run();
         programState = new ProgramState(programSource, true);
         NibbleExtractor nibbleExtractor = new NibbleExtractor();
+
+
+//        sandClass sand_class = new sandClass();
+
 
         boolean sleepBetweenInstructions = true;  // TODO: Should be moved to console args map
         System.out.println("Started Running the Program...");
@@ -46,17 +51,21 @@ public class DebuggerMain {
 //static int count = 0;
     @CrossOrigin
     @GetMapping("/")
-    public String getDisplayMatrix() {
+    public ProgramState getDisplayMatrix() throws JsonProcessingException {
 //        programState
 //        count++;
 //        System.out.println("B " + count);
 //        return count;
 //        System.out.println("HAD BEEN INVOKED!!!!!");
         if (Objects.isNull(programState)) {
-            return "Nothing!";
+            return null;
+//            return new JSONObject("Nothing!");
 //            return new JSONObject("{val: Nothing!}");
         } else {
-            return programState.getDisplayMatrixAsString();
+            ObjectMapper objectMapper = new ObjectMapper();
+            return programState;
+//            return new JSONObject(objectMapper.writeValueAsString(programState));
+//            return programState.getDisplayMatrixAsString();
 //            return new JSONObject("{val: HIIII}");
         }
     }

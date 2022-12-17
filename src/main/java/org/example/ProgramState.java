@@ -1,5 +1,8 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.SwingUtilities;
 import lombok.Getter;
 import lombok.NonNull;
@@ -16,14 +19,24 @@ public class ProgramState {
     @Getter
     @Setter
     private int programCounter;
+//    @JsonIgnore
     private Registers registers;
+//    @JsonIgnore
     private Memory memory;
+    @JsonIgnore
     private DisplayCanvas displayCanvas;
+//    @Getter
+//    @Setter
+//    @JsonIgnore
+    byte[] programSource;
+
+
 
     public ProgramState(@NonNull final byte[] source, boolean debugMode) {
         this.programCounter = Constants.PC_START;   // PC starts at 0x200 in memory
         this.registers = new Registers();
         this.memory = new Memory();
+        this.programSource = source;
         this.memory.loadProgram(source);      // Loads the program in memory from 0x200 onwards
         this.displayCanvas = new DisplayCanvas();
         if (!debugMode) {
@@ -58,6 +71,7 @@ public class ProgramState {
         return displayCanvas.getDisplayMatrixAsString();
     }
 
+    @JsonIgnore
     public Instruction getNextInstruction() {
         // Fetches the next instruction to execute
         int firstByte = this.memory.getAddress(this.programCounter);
@@ -73,9 +87,7 @@ public class ProgramState {
         this.displayCanvas.printDisplayMatrix();
     }
 
-    public int[][] getDisplayMatrix() {
-        return this.displayCanvas.getDisplayMatrix();
-    }
+
 
     public int getDisplayMatrixPixel(int r, int c) {
         return this.displayCanvas.getDisplayMatrixPixel(r, c);
@@ -91,5 +103,21 @@ public class ProgramState {
 
     public void updateScreen() {
         this.displayCanvas.updateScreen();
+    }
+
+    public ArrayList<Character> getAllRegisterNames() {
+        return this.registers.getRegisterNames();
+    }
+
+    public ArrayList<Integer> getAllRegisters() {
+        return this.registers.getReg();
+    }
+
+    public ArrayList<Integer> getProgramSource() {
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (byte b : this.programSource) {
+            arr.add(Utility.byteToInt(b));
+        }
+        return arr;
     }
 }
