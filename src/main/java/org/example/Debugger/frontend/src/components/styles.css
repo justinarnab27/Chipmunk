@@ -4,8 +4,8 @@
 }
 
 #canvas {
-    background-color: red;
-    border: 5px solid black;
+    background-color: black;
+    /* border: 5px solid black; */
 }
 
 .code-container {
@@ -61,7 +61,7 @@
 }
 
 .code li.selected-line {
-    background-color: aquamarine;
+    background-color: aquamarine
 }
 
 .code li.header {
@@ -88,4 +88,5 @@
 .data {
     background-color: aqua;
     flex:1;
+    /* min-width: 500px; */
 }

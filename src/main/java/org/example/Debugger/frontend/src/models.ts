@@ -9,7 +9,7 @@ export interface ProgramStateUnParsed {
 export interface ProgramStateParsed {
     lineNumber: number;
     programSource: number[];
-    // displayMatrixAsString: string;
+    displayMatrix: number[][];
     // allRegisterNames: string[];
     // allRegisters: number[];
 }
