@@ -72,6 +72,7 @@
     justify-content: center;
     /* text-align: center; */
     background-color: pink;
+    /* position: sticky; */
 }
 
 .code li .index {
@@ -86,7 +87,45 @@
 }
 
 .data {
-    background-color: aqua;
+
+    border: 2px solid black;
+    /* background-color: aqua; */
     flex:1;
+    /* letter-spacing: 5px;
+    /* margin: 10px; */
+    /* padding: 30px;  */
     /* min-width: 500px; */
+}
+
+.data .registers {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: source-code-pro;
+}
+
+.data .registers li {
+    display: flex;
+    padding: 3px 0px;
+}
+
+.data .registers li.header {
+    background-color: cyan;
+    letter-spacing: normal;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    /* padding: 5px; */
+}
+
+.data .registers li .reg-name {
+    flex: 1;
+    /* background-color: blueviolet; */
+}
+
+.data .registers li .reg-val {
+    /* background-color: gold; */
+    flex: 2;
 }

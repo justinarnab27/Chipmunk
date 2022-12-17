@@ -10,8 +10,8 @@ export interface ProgramStateParsed {
     lineNumber: number;
     programSource: number[];
     displayMatrix: number[][];
-    // allRegisterNames: string[];
-    // allRegisters: number[];
+    allRegisterNames: string[];
+    allRegisters: number[];
 }
 // export interface ProgramStateParsed {
 //     programSource: number[];

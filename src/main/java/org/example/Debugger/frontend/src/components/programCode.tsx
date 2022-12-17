@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { convertToBin, convertToDec, convertToHex } from '../utilities';
 
 interface Props {
   programSource: number[];
@@ -9,18 +10,6 @@ const ProgramCode = ({programSource, lineNumber}: Props) => {
   const [baseSelected, setBaseSelected] = useState<number>(16);
   const [currentInstruction, setCurrentInstruction] = useState<number>(0);
   const [instructionArray, setInstructionArray] = useState<string[]>([]);
-  const convertToHex = (byte: number): string => {
-    let byteHex = byte.toString(16);
-    return "0".repeat(2 - byteHex.length) + byteHex;
-  }
-  const convertToBin = (byte: number): string => {
-    let byteHex = byte.toString(2);
-    return "0".repeat(8 - byteHex.length) + byteHex;
-  }
-  const convertToDec = (byte: number): string => {
-    let byteHex = byte.toString(10);
-    return "0".repeat(3 - byteHex.length) + byteHex;
-  }
   const changeInstructionsToBase = (programSource: number[], base: number) => {
     let convert;
     switch(base) {

@@ -6,7 +6,13 @@ import ProgramData from './components/programData';
 import { ProgramStateParsed, ProgramStateUnParsed } from './models';
 
 const App = () => {
-  const [programStateParsed, setProgramStateParsed] = useState<ProgramStateParsed>({programSource: [], lineNumber: 0, displayMatrix: []});
+  const [programStateParsed, setProgramStateParsed] = useState<ProgramStateParsed>({
+    programSource: [],
+    lineNumber: 0,
+    displayMatrix: [],
+    allRegisterNames: [],
+    allRegisters: []
+  });
   const processProgramState = (programeState: ProgramStateUnParsed) => {
     // const arr = new Array() 
 
@@ -19,9 +25,11 @@ const App = () => {
     }
 
     // console.log(arr);
-    const newState: ProgramStateParsed = {...programStateParsed, programSource: programeState.programSource,
+    const newState: ProgramStateParsed = {programSource: programeState.programSource,
           lineNumber: Math.floor((programeState.programCounter - 512)/2),
-          displayMatrix: arr
+          displayMatrix: arr,
+          allRegisterNames: programeState.allRegisterNames,
+          allRegisters: programeState.allRegisters
         };
     setProgramStateParsed(newState);
 
@@ -55,7 +63,7 @@ const App = () => {
       <div className="display_container">
         <ProgramCode programSource={programStateParsed.programSource} lineNumber={programStateParsed.lineNumber}/>
         <Display displayMatrix={programStateParsed.displayMatrix}/>
-        <ProgramData/>
+        <ProgramData allRegisterNames={programStateParsed.allRegisterNames} allRegisters={programStateParsed.allRegisters}/>
       </div>
     </div>
   );
