@@ -109,6 +109,8 @@
 .data .registers li {
     display: flex;
     padding: 3px 0px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .data .registers li.header {
@@ -117,6 +119,8 @@
     font-weight: 700;
     display: flex;
     justify-content: center;
+    margin: 0;
+    margin-bottom: 3px;
     /* padding: 5px; */
 }
 
@@ -128,4 +132,13 @@
 .data .registers li .reg-val {
     /* background-color: gold; */
     flex: 2;
+}
+
+.data .registers li.changed {
+    /* background-color: aqua; */
+    /* transition-delay: 1s; */
+    border-radius: 5px;
+    box-shadow:  0 0 7px 1px #ffdf80;
+    /* outline: aqua 2px solid; */
+    /* outline-ra */
 }

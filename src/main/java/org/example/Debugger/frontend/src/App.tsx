@@ -13,6 +13,7 @@ const App = () => {
     allRegisterNames: [],
     allRegisters: []
   });
+  const [prevAllRegisters, setPrevAllRegisters] = useState<number[]>([]);
   const processProgramState = (programeState: ProgramStateUnParsed) => {
     // const arr = new Array() 
 
@@ -24,14 +25,23 @@ const App = () => {
       // arr.push()
     }
 
-    // console.log(arr);
+    // console.log("AAAAAAA " + programStateParsed.allRegisters);
+    // console.log(prevAllRegisters.some((val, ix) => val !== programeState.allRegisters[ix]));
+    
     const newState: ProgramStateParsed = {programSource: programeState.programSource,
           lineNumber: Math.floor((programeState.programCounter - 512)/2),
           displayMatrix: arr,
           allRegisterNames: programeState.allRegisterNames,
           allRegisters: programeState.allRegisters
         };
-    setProgramStateParsed(newState);
+    setProgramStateParsed((prevState) => {
+      // setPrevAllRegisters(prevState.allRegisters);
+      if(programeState.allRegisters.some((val, ix) => val !== prevState.allRegisters[ix])) {
+        console.log("hiiiiii");
+        setPrevAllRegisters(prevState.allRegisters);
+      }
+      return newState;
+    });
 
   }
 
@@ -63,7 +73,7 @@ const App = () => {
       <div className="display_container">
         <ProgramCode programSource={programStateParsed.programSource} lineNumber={programStateParsed.lineNumber}/>
         <Display displayMatrix={programStateParsed.displayMatrix}/>
-        <ProgramData allRegisterNames={programStateParsed.allRegisterNames} allRegisters={programStateParsed.allRegisters}/>
+        <ProgramData allRegisterNames={programStateParsed.allRegisterNames} allRegisters={programStateParsed.allRegisters} prevAllRegisters={prevAllRegisters}/>
       </div>
     </div>
   );

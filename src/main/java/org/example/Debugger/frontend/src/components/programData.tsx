@@ -1,19 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { convertToBase } from '../utilities';
 
 interface Props {
   allRegisterNames: string[];
   allRegisters: number[];
+  prevAllRegisters: number[];
 }
 
-const ProgramData = ({allRegisterNames, allRegisters}: Props) => {
+const ProgramData = ({allRegisterNames, allRegisters, prevAllRegisters}: Props) => {
   const [baseSelected, setBaseSelected] = useState<number>(16);
+  // const [registerHasChanged, setRegisterHasChanged] = useState<boolean[]>([]);
+  useEffect(() => {
+    // console.log("HI!");
+    // console.log(allRegisters, prevAllRegisters);
+    // console.log("#########################");
+  })
+  
   return (
     <div className='data'>
       <ul className='registers'>
         <li className='header'>Registers</li>
         {allRegisters.map((item, ix) =>
-          <li>
+          <li key={allRegisterNames[ix]} className={allRegisters[ix] !== prevAllRegisters[ix] ? "changed" : ""}>
             <span className='reg-name'>
               {allRegisterNames[ix]}
             </span>
