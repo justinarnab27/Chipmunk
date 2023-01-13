@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { PostAction } from '../models';
 import { convertToBin, convertToDec, convertToHex } from '../utilities';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPause, faStop, faRotateRight, faPlay} from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
   programSource: number[];
   lineNumber: number;
+  handlePostMethods: (action: PostAction) => void;
 }
 
-const ProgramCode = ({programSource, lineNumber}: Props) => {
+const ProgramCode = ({programSource, lineNumber, handlePostMethods}: Props) => {
+  const [autoPlay, setAutoPlay] = useState<boolean>(false);
+  const [autoPlayPaused, setAutoPlayPaused] = useState<boolean>(false);
   const [baseSelected, setBaseSelected] = useState<number>(16);
   const [currentInstruction, setCurrentInstruction] = useState<number>(0);
   const [instructionArray, setInstructionArray] = useState<string[]>([]);
@@ -62,6 +68,65 @@ useEffect(() =>
             <input type="radio" className='hex' checked={baseSelected === 16} onChange={()=>{setBaseSelected(16)}}/>
             <label>Hex</label>
       </form>
+      <div className='controls'>
+        {autoPlay ? (
+          <>
+            {autoPlayPaused ? (
+              <button onClick={
+                (e) => {
+                  e.preventDefault();
+                  setAutoPlayPaused(false);
+                  handlePostMethods("Resume");}}>
+                <FontAwesomeIcon icon={faPlay} />
+              </button>
+            ) : (
+              <button onClick={
+                (e) => {
+                  e.preventDefault();
+                  setAutoPlayPaused(true);
+                  handlePostMethods("Pause");}}>
+                <FontAwesomeIcon icon={faPause} />
+              </button>
+            )}
+            <button onClick={
+              (e) => {
+                e.preventDefault();
+                setAutoPlay(false);
+                handlePostMethods("Stop");}}>
+              <FontAwesomeIcon icon={faStop} />
+            </button>
+            <button onClick={
+              (e) => {
+                e.preventDefault();
+                handlePostMethods("Reset");}}>
+              <FontAwesomeIcon icon={faRotateRight} />
+            </button>
+          </>
+        ) : (
+          <>
+          <button onClick={
+            (e) => {
+              e.preventDefault();
+              setAutoPlay(true);
+              setAutoPlayPaused(false);
+              handlePostMethods("Auto");}}>
+            Auto
+          </button>
+          <button onClick={
+            (e) => {
+              e.preventDefault();
+              handlePostMethods("Next");}}>
+            Next
+          </button>
+          <button onClick={
+              (e) => {
+                e.preventDefault();
+                handlePostMethods("Reset");}}>
+              <FontAwesomeIcon icon={faRotateRight} />
+          </button>
+          </>
+        )}
+      </div>
     </div>
   )
 }

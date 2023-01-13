@@ -1,15 +1,22 @@
 package org.example;
 
 import org.example.Instructions.Add;
+import org.example.Instructions.AddWithCarry;
+import org.example.Instructions.BinaryAND;
+import org.example.Instructions.BinaryOR;
 import org.example.Instructions.Clear;
 import org.example.Instructions.Display;
 import org.example.Instructions.Jump;
+import org.example.Instructions.LogicalXOR;
 import org.example.Instructions.SetIndex;
 import org.example.Instructions.SetToNN;
+import org.example.Instructions.SetToVY;
 import org.example.Instructions.Skip3;
 import org.example.Instructions.Skip4;
 import org.example.Instructions.Skip5;
 import org.example.Instructions.Skip9;
+import org.example.Instructions.SubtractVXFromVY;
+import org.example.Instructions.SubtractVYFromVX;
 
 public class NibbleExtractor {
     /**
@@ -109,27 +116,34 @@ public class NibbleExtractor {
                 switch (nibbles[3]) {
                     case 0x0:
                         System.out.println("Set");
+                        SetToVY.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0x1:
                         System.out.println("Binary OR");
+                        BinaryOR.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0x2:
                         System.out.println("Binary AND");
+                        BinaryAND.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0x3:
                         System.out.println("Logical XOR");
+                        LogicalXOR.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0x4:
-                        System.out.println("Add");
+                        System.out.println("Add with carry");
+                        AddWithCarry.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0x5:
-                        System.out.println("Subtract");
+                        System.out.println("Subtract VX - VY");
+                        SubtractVYFromVX.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0x6:
                         System.out.println("Shift");
                         break;
                     case 0x7:
-                        System.out.println("Subtract");
+                        System.out.println("Subtract VY - VX");
+                        SubtractVXFromVY.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0xE:
                         System.out.println("Shift");

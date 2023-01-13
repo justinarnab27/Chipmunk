@@ -19,6 +19,7 @@
 .buttons {
     /* background-color: red; */
     display: flex;
+    /* justify-content: space-between; */
     justify-content: flex-start;
     margin: 6px 9px;
 }
@@ -86,6 +87,52 @@
     flex: 2;
 }
 
+.code-container .controls {
+    display: flex;
+    /* background-color: red; */
+    /* flex-wrap: nowrap; */
+    /* justify-content:  */
+    /* flex-grow: 1; */
+    margin: 7px 0px;
+    margin-bottom: 30px;
+}
+
+.code-container .controls button {
+    margin: 0 3px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    /* flex:1; */
+    /* flex-basis: content; */
+    background-color: blueviolet;
+    color: beige;
+    letter-spacing: 3px;
+    font-size: 15px;
+    border: 1px solid white;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    /* width: fit-content;
+    display: flex;
+    flex-wrap: nowrap; */
+}
+
+.code-container .controls button:hover {
+    /* outline: 2px solid yellow; */
+    /* background-color: #5c2be2; */
+    cursor: pointer;
+}
+
+.code-container .controls button:active {
+    /* outline: 2px solid yellow; */
+    /* transition-property: background-color; */
+    /* transition-delay: 0ms;
+    transition-duration: 500ms; */
+    background-color: #5c2be2;
+    /* cursor: pointer; */
+}
+
+
 .data {
 
     border: 2px solid black;
@@ -141,4 +188,10 @@
     box-shadow:  0 0 7px 1px #ffdf80;
     /* outline: aqua 2px solid; */
     /* outline-ra */
+}
+
+.data .registers .twocolumns {
+    /* background-color: red; */
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
 }

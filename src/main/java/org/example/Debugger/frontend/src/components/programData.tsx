@@ -20,7 +20,8 @@ const ProgramData = ({allRegisterNames, allRegisters, prevAllRegisters}: Props) 
     <div className='data'>
       <ul className='registers'>
         <li className='header'>Registers</li>
-        {allRegisters.map((item, ix) =>
+        <span className="twocolumns">
+          {allRegisters.map((item, ix) =>
           <li key={allRegisterNames[ix]} className={allRegisters[ix] !== prevAllRegisters[ix] ? "changed" : ""}>
             <span className='reg-name'>
               {allRegisterNames[ix]}
@@ -30,6 +31,7 @@ const ProgramData = ({allRegisterNames, allRegisters, prevAllRegisters}: Props) 
             </span>
           </li>
         )}
+        </span>
       </ul>
       <form className='buttons'>
             <input type="radio" className='dec'  checked={baseSelected === 2} onChange={()=>{setBaseSelected(2)}}/>

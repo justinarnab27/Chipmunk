@@ -10,19 +10,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
 public class DebuggerMain {
     static ProgramState programState;
+    static NibbleExtractor nibbleExtractor;
+    static boolean autoPlay = false;
+    static boolean playPaused = false;
     private static byte[] programSource;
     public void startDebugger(byte[] source) throws Exception {
         programSource = source;
         SpringApplicationBuilder builder = new SpringApplicationBuilder(DebuggerMain.class);
         builder.headless(false).run();
         programState = new ProgramState(programSource, true);
-        NibbleExtractor nibbleExtractor = new NibbleExtractor();
+        this.nibbleExtractor = new NibbleExtractor();
 
 
 //        sandClass sand_class = new sandClass();
@@ -35,18 +40,44 @@ public class DebuggerMain {
 //        ProgramState programState = new ProgramState(this.programSource, false);
 //        NibbleExtractor nibbleExtractor = new NibbleExtractor();
         int MAX_ITER = 100;  // Program stops after MAX_ITER iterations
+        if(sleepBetweenInstructions) return;
         while(MAX_ITER > 0) {
             Instruction instruction = programState.getNextInstruction();
             nibbleExtractor.extract(instruction, programState);
 //            System.out.println("Program Counter: " + programState.getProgramCounter());
             programState.printRegisters();
             if (sleepBetweenInstructions) {
-                Thread.sleep(1500);
+                Thread.sleep(500);
             }
             MAX_ITER--;
 //            count++;
 //            System.out.println("A " + count);
         }
+    }
+
+    public void handleNext() throws Exception {
+        Instruction instruction = programState.getNextInstruction();
+        nibbleExtractor.extract(instruction, programState);
+//            System.out.println("Program Counter: " + programState.getProgramCounter());
+        programState.printRegisters();
+    }
+
+    public void handleAuto() throws Exception {
+        boolean sleepBetweenInstructions = true;
+        autoPlay = true;
+        playPaused = false;
+        while(autoPlay) {
+            if(!playPaused) {
+                handleNext();
+            }
+            if (sleepBetweenInstructions) {
+                Thread.sleep(1500);
+            }
+        }
+    }
+
+    public void handleReset() {
+        programState = new ProgramState(programSource, true);
     }
 //static int count = 0;
     @CrossOrigin
@@ -68,5 +99,43 @@ public class DebuggerMain {
 //            return programState.getDisplayMatrixAsString();
 //            return new JSONObject("{val: HIIII}");
         }
+    }
+
+    @CrossOrigin
+    @PostMapping("/")
+    public void nextInstruction(@RequestBody String action) throws Exception {
+        System.out.println("Received Request: " + action);
+        switch (action) {
+            case "Next":
+                System.out.println("Next");
+                handleNext();
+                break;
+            case "Auto":
+                System.out.println("Auto");
+                handleAuto();
+                break;
+            case "FromStart":
+                break;
+            case "Stop":
+                System.out.println("Stop");
+                autoPlay = false;
+                break;
+            case "Pause":
+                System.out.println("Pause");
+                playPaused = true;
+                break;
+            case "Resume":
+                System.out.println("Resume");
+                playPaused = false;
+                break;
+            case "Reset":
+                System.out.println("Reset");
+                handleReset();
+                break;
+            default:
+                System.out.println("This is a green apple!");
+        }
+//        return programState;
+//        executeNextInstruction();
     }
 }

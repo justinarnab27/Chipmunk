@@ -3,7 +3,7 @@ import './App.css';
 import Display from './components/display';
 import ProgramCode from './components/programCode';
 import ProgramData from './components/programData';
-import { ProgramStateParsed, ProgramStateUnParsed } from './models';
+import { PostAction, ProgramStateParsed, ProgramStateUnParsed } from './models';
 
 const App = () => {
   const [programStateParsed, setProgramStateParsed] = useState<ProgramStateParsed>({
@@ -37,7 +37,7 @@ const App = () => {
     setProgramStateParsed((prevState) => {
       // setPrevAllRegisters(prevState.allRegisters);
       if(programeState.allRegisters.some((val, ix) => val !== prevState.allRegisters[ix])) {
-        console.log("hiiiiii");
+        // console.log("hiiiiii");
         setPrevAllRegisters(prevState.allRegisters);
       }
       return newState;
@@ -53,6 +53,14 @@ const App = () => {
                       // console.log(t);
                       processProgramState(t);
                     })});
+  }
+  const handlePostMethods = (action: PostAction) => {
+        fetch("http://localhost:8080/", {
+          method: 'POST',
+          headers: new Headers(),
+          body: action
+        })
+    getProgramState();
   }
   useEffect(() => {
     // setTimeout(
@@ -71,9 +79,13 @@ const App = () => {
         </h1>
       </div>
       <div className="display_container">
-        <ProgramCode programSource={programStateParsed.programSource} lineNumber={programStateParsed.lineNumber}/>
+        <ProgramCode programSource={programStateParsed.programSource}
+                    lineNumber={programStateParsed.lineNumber}
+                    handlePostMethods={handlePostMethods}/>
         <Display displayMatrix={programStateParsed.displayMatrix}/>
-        <ProgramData allRegisterNames={programStateParsed.allRegisterNames} allRegisters={programStateParsed.allRegisters} prevAllRegisters={prevAllRegisters}/>
+        <ProgramData allRegisterNames={programStateParsed.allRegisterNames}
+                    allRegisters={programStateParsed.allRegisters}
+                    prevAllRegisters={prevAllRegisters}/>
       </div>
     </div>
   );

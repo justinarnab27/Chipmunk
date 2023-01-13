@@ -13,6 +13,14 @@ export interface ProgramStateParsed {
     allRegisterNames: string[];
     allRegisters: number[];
 }
+
+export type PostAction =
+    | "Next"
+    | "Auto"
+    | "Stop"
+    | "Pause"
+    | "Reset"
+    | "Resume"
 // export interface ProgramStateParsed {
 //     programSource: number[];
 // }
