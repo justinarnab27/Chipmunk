@@ -35,6 +35,7 @@ const ProgramCode = ({programSource, lineNumber, handlePostMethods}: Props) => {
     }
     setInstructionArray(arr);
   }
+  // setCounter(ccounter => ounter + 1setCounter(counter + 1))
   useEffect(() => {
     changeInstructionsToBase(programSource, baseSelected);
   }, [programSource, baseSelected])

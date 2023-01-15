@@ -3,6 +3,7 @@ package org.example;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import javax.swing.SwingUtilities;
 import lombok.Getter;
 import lombok.NonNull;
@@ -29,6 +30,8 @@ public class ProgramState {
 //    @Setter
 //    @JsonIgnore
     byte[] programSource;
+    //TODO: This might need to be turned into a separate class if it gets sufficiently complicated
+    private Stack<Integer> programStack;
 
 
 
@@ -39,6 +42,7 @@ public class ProgramState {
         this.programSource = source;
         this.memory.loadProgram(source);      // Loads the program in memory from 0x200 onwards
         this.displayCanvas = new DisplayCanvas();
+        this.programStack = new Stack<>();
         if (!debugMode) {
             SwingUtilities.invokeLater(() -> this.displayCanvas.createAndShowGui());    // Creates gui
         }
@@ -119,5 +123,12 @@ public class ProgramState {
             arr.add(Utility.byteToInt(b));
         }
         return arr;
+    }
+
+    public void pushOnStack(int val) {
+        this.programStack.push(val);
+    }
+    public Integer popFromStack() {
+        return this.programStack.pop();
     }
 }

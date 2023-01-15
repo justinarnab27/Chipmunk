@@ -47,7 +47,7 @@ public class DebuggerMain {
 //            System.out.println("Program Counter: " + programState.getProgramCounter());
             programState.printRegisters();
             if (sleepBetweenInstructions) {
-                Thread.sleep(500);
+                Thread.sleep(20);
             }
             MAX_ITER--;
 //            count++;
@@ -71,7 +71,7 @@ public class DebuggerMain {
                 handleNext();
             }
             if (sleepBetweenInstructions) {
-                Thread.sleep(1500);
+                Thread.sleep(100);
             }
         }
     }

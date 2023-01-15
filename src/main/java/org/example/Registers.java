@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import lombok.Setter;
 
 
+import static org.example.Constants.REGISTER_I;
 import static org.example.Constants.REGISTER_NUMBER;
 
 //@Data
@@ -42,7 +43,8 @@ public class Registers {
     }
 
     public void setRegister(@NonNull final int registerName, @NonNull final int value) {
-        this.reg.set(registerName, value);
+        // Registers are 8-bit (16 in case of I) so value can't exceed 255 (65535)
+        this.reg.set(registerName, registerName == REGISTER_I ? value % 65536 : value % 256);
     }
 
     public void printRegisters() {

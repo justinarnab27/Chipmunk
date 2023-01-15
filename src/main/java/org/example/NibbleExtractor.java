@@ -4,10 +4,16 @@ import org.example.Instructions.Add;
 import org.example.Instructions.AddWithCarry;
 import org.example.Instructions.BinaryAND;
 import org.example.Instructions.BinaryOR;
+import org.example.Instructions.CallSubroutine;
 import org.example.Instructions.Clear;
 import org.example.Instructions.Display;
 import org.example.Instructions.Jump;
+import org.example.Instructions.JumpWithOffset;
+import org.example.Instructions.LeftShift;
 import org.example.Instructions.LogicalXOR;
+import org.example.Instructions.RandomAnd;
+import org.example.Instructions.ReturnFromSubroutine;
+import org.example.Instructions.RightShift;
 import org.example.Instructions.SetIndex;
 import org.example.Instructions.SetToNN;
 import org.example.Instructions.SetToVY;
@@ -79,7 +85,8 @@ public class NibbleExtractor {
                         Clear.execute(programState);
                         break;
                     case 0xE:
-                        System.out.println("Subroutines");
+                        System.out.println("Returning From Subroutine");
+                        ReturnFromSubroutine.execute(programState);
                         break;
                     default:
                         throw new Exception(String.format("Unknown Instruction %02X%02X", firstByte, secondByte));
@@ -90,7 +97,8 @@ public class NibbleExtractor {
                 Jump.execute(Utility.combineThreeNibbles(nibbles[1], nibbles[2], nibbles[3]), programState);
                 break;
             case 0x2:
-                System.out.println("Subroutines");
+                System.out.println("Calling Subroutine");
+                CallSubroutine.execute(Utility.combineThreeNibbles(nibbles[1], nibbles[2], nibbles[3]), programState);
                 break;
             case 0x3:
                 System.out.println("Skip3");
@@ -139,14 +147,16 @@ public class NibbleExtractor {
                         SubtractVYFromVX.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0x6:
-                        System.out.println("Shift");
+                        System.out.println("Right Shift");
+                        RightShift.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0x7:
                         System.out.println("Subtract VY - VX");
                         SubtractVXFromVY.execute(nibbles[1], nibbles[2], programState);
                         break;
                     case 0xE:
-                        System.out.println("Shift");
+                        System.out.println("Left Shift");
+                        LeftShift.execute(nibbles[1], nibbles[2], programState);
                         break;
                     default:
                         throw new Exception(String.format("Unknown Instruction %02X%02X", firstByte, secondByte));
@@ -162,9 +172,11 @@ public class NibbleExtractor {
                 break;
             case 0xB:
                 System.out.println("Jump with offset");
+                JumpWithOffset.execute(Utility.combineThreeNibbles(nibbles[1], nibbles[2], nibbles[3]), programState);
                 break;
             case 0xC:
                 System.out.println("Random");
+                RandomAnd.execute(nibbles[1], Utility.combineTwoNibbles(nibbles[2], nibbles[3]), programState);
                 break;
             case 0xD:
                 System.out.println("Display");

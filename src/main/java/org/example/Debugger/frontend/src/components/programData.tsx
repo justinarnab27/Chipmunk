@@ -41,6 +41,9 @@ const ProgramData = ({allRegisterNames, allRegisters, prevAllRegisters}: Props) 
             <input type="radio" className='hex' checked={baseSelected === 16} onChange={()=>{setBaseSelected(16)}}/>
             <label>Hex</label>
       </form>
+      <ul className="memory">
+        
+      </ul>
     </div>
   )
 }
