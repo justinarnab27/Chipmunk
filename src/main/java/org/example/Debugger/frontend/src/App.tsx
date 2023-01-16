@@ -11,12 +11,15 @@ const App = () => {
     lineNumber: 0,
     displayMatrix: [],
     allRegisterNames: [],
-    allRegisters: []
+    allRegisters: [],
+    programCounter: 0,
+    breakPoints: new Set<number>()
   });
   const [prevAllRegisters, setPrevAllRegisters] = useState<number[]>([]);
+  const [autoPlayPaused, setAutoPlayPaused] = useState<boolean>(false);
   const processProgramState = (programeState: ProgramStateUnParsed) => {
     // const arr = new Array() 
-
+    setAutoPlayPaused(programeState.playPaused);
     const lines = programeState.displayMatrixAsString.split('\n');
     const arr: number[][] = [];
     for (let line of lines) {
@@ -32,7 +35,9 @@ const App = () => {
           lineNumber: Math.floor((programeState.programCounter - 512)/2),
           displayMatrix: arr,
           allRegisterNames: programeState.allRegisterNames,
-          allRegisters: programeState.allRegisters
+          allRegisters: programeState.allRegisters,
+          programCounter: programeState.programCounter,
+          breakPoints: new Set<number>(programeState.breakPoints)
         };
     setProgramStateParsed((prevState) => {
       // setPrevAllRegisters(prevState.allRegisters);
@@ -54,11 +59,11 @@ const App = () => {
                       processProgramState(t);
                     })});
   }
-  const handlePostMethods = (action: PostAction) => {
+  const handlePostMethods = (action: PostAction, ix: number | null = null) => {
         fetch("http://localhost:8080/", {
           method: 'POST',
           headers: new Headers(),
-          body: action
+          body: action + (ix === null ? '' : ' ' + ix)
         })
     getProgramState();
   }
@@ -81,11 +86,15 @@ const App = () => {
       <div className="display_container">
         <ProgramCode programSource={programStateParsed.programSource}
                     lineNumber={programStateParsed.lineNumber}
-                    handlePostMethods={handlePostMethods}/>
+                    handlePostMethods={handlePostMethods}
+                    breakPoints={programStateParsed.breakPoints}
+                    autoPlayPaused={autoPlayPaused}
+                    setAutoPlayPaused={setAutoPlayPaused}/>
         <Display displayMatrix={programStateParsed.displayMatrix}/>
         <ProgramData allRegisterNames={programStateParsed.allRegisterNames}
                     allRegisters={programStateParsed.allRegisters}
-                    prevAllRegisters={prevAllRegisters}/>
+                    prevAllRegisters={prevAllRegisters}
+                    programCounter={programStateParsed.programCounter}/>
       </div>
     </div>
   );

@@ -3,9 +3,12 @@ package org.example.Debugger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
+import java.util.Set;
+import lombok.Getter;
 import org.example.Instruction;
 import org.example.NibbleExtractor;
 import org.example.ProgramState;
+import org.example.Utility;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +23,7 @@ public class DebuggerMain {
     static ProgramState programState;
     static NibbleExtractor nibbleExtractor;
     static boolean autoPlay = false;
-    static boolean playPaused = false;
+//    static boolean playPaused = false;
     private static byte[] programSource;
     public void startDebugger(byte[] source) throws Exception {
         programSource = source;
@@ -65,9 +68,15 @@ public class DebuggerMain {
     public void handleAuto() throws Exception {
         boolean sleepBetweenInstructions = true;
         autoPlay = true;
-        playPaused = false;
+        programState.setPlayPaused(false);
         while(autoPlay) {
-            if(!playPaused) {
+            if(!programState.isPlayPaused()) {
+                if (programState.isABreakPoint(Utility.covertPCToLine(programState.getProgramCounter())) && !programState.isGoOverBreakPoint()) {
+                    programState.setPlayPaused(true);    // Pauses when break point is hit
+                    programState.setGoOverBreakPoint(true);  // Next time it won't be paused by break point
+                    continue;
+                }
+                programState.setGoOverBreakPoint(false);    // Revert back to it
                 handleNext();
             }
             if (sleepBetweenInstructions) {
@@ -77,7 +86,14 @@ public class DebuggerMain {
     }
 
     public void handleReset() {
+        // Ensures that the break points don't get reset
+        Set<Integer> bps = programState.getBreakPoints();
         programState = new ProgramState(programSource, true);
+        programState.setBreakPoints(bps);
+    }
+
+    public void handleToggleBreakPoint(int ix) {
+        programState.toggleBreakPoint(ix);
     }
 //static int count = 0;
     @CrossOrigin
@@ -103,8 +119,10 @@ public class DebuggerMain {
 
     @CrossOrigin
     @PostMapping("/")
-    public void nextInstruction(@RequestBody String action) throws Exception {
-        System.out.println("Received Request: " + action);
+    public void nextInstruction(@RequestBody String actionBody) throws Exception {
+        System.out.println("Received Request: " + actionBody);
+        String[] actions = actionBody.split(" ");
+        String action = actions[0];
         switch (action) {
             case "Next":
                 System.out.println("Next");
@@ -122,15 +140,20 @@ public class DebuggerMain {
                 break;
             case "Pause":
                 System.out.println("Pause");
-                playPaused = true;
+                programState.setPlayPaused(true);
                 break;
             case "Resume":
                 System.out.println("Resume");
-                playPaused = false;
+                programState.setPlayPaused(false);
                 break;
             case "Reset":
                 System.out.println("Reset");
                 handleReset();
+                break;
+            case "ToggleBreakPoint":
+                int ix = Integer.parseInt(actions[1]);
+                System.out.println("Toggle Break Point " + ix);
+                handleToggleBreakPoint(ix);
                 break;
             default:
                 System.out.println("This is a green apple!");

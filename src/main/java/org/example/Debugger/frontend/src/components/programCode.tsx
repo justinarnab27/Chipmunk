@@ -2,17 +2,20 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { PostAction } from '../models';
 import { convertToBin, convertToDec, convertToHex } from '../utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPause, faStop, faRotateRight, faPlay} from '@fortawesome/free-solid-svg-icons'
+import { faPause, faStop, faRotateRight, faPlay, faCircle} from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
   programSource: number[];
   lineNumber: number;
-  handlePostMethods: (action: PostAction) => void;
+  handlePostMethods: (action: PostAction, ix?: number | null) => void,
+  breakPoints: Set<number>,
+  autoPlayPaused: boolean,
+  setAutoPlayPaused: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ProgramCode = ({programSource, lineNumber, handlePostMethods}: Props) => {
+const ProgramCode = ({programSource, lineNumber, handlePostMethods, breakPoints, autoPlayPaused, setAutoPlayPaused}: Props) => {
   const [autoPlay, setAutoPlay] = useState<boolean>(false);
-  const [autoPlayPaused, setAutoPlayPaused] = useState<boolean>(false);
+  // const [breakPoints, setBreakPoints] = useState<Set<number>>(new Set<number>());
   const [baseSelected, setBaseSelected] = useState<number>(16);
   const [currentInstruction, setCurrentInstruction] = useState<number>(0);
   const [instructionArray, setInstructionArray] = useState<string[]>([]);
@@ -39,10 +42,22 @@ const ProgramCode = ({programSource, lineNumber, handlePostMethods}: Props) => {
   useEffect(() => {
     changeInstructionsToBase(programSource, baseSelected);
   }, [programSource, baseSelected])
-useEffect(() =>
+  useEffect(() =>
     setCurrentInstruction(lineNumber)
     , [lineNumber]
   )
+
+  // const toggleBreakPoint = (ix: number) => {
+  //   let s = new Set(breakPoints);
+  //   if(breakPoints.has(ix)) {
+  //     s.delete(ix);
+  //   } else {
+  //     s.add(ix);
+  //   }
+  //   setBreakPoints(s);
+  // }
+
+  // useEffect(() => console.log(breakPoints));
 
   return (
     <div className='code-container'>
@@ -52,7 +67,11 @@ useEffect(() =>
           {instructionArray.map(
             (item, ix) => 
             <li className={currentInstruction === ix ? 'selected-line' : ''} key={ix.toString() + item.toString()}>
-              <span className='index'>
+              {/* <span>
+
+              </span> */}
+              <span className={'index' + (breakPoints.has(ix) ? ' breakpoint' : '')} onClick={() => handlePostMethods("ToggleBreakPoint", ix)}>
+                <FontAwesomeIcon icon={faCircle}/>
                 {ix}
               </span>
               <span className='text'>

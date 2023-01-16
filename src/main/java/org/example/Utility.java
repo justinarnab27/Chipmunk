@@ -30,4 +30,8 @@ public class Utility {
         // Combines three 4-bit nibbles into a int
         return ((byte1 & 0xff) << 8) | (byte2 & 0xff) << 4 | (byte3 & 0xff);
     }
+
+    public static int covertPCToLine(int PC) {
+        return (PC - 512) / 2;
+    }
 }

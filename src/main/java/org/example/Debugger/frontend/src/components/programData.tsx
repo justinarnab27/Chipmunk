@@ -5,9 +5,10 @@ interface Props {
   allRegisterNames: string[];
   allRegisters: number[];
   prevAllRegisters: number[];
+  programCounter: number
 }
 
-const ProgramData = ({allRegisterNames, allRegisters, prevAllRegisters}: Props) => {
+const ProgramData = ({allRegisterNames, allRegisters, prevAllRegisters, programCounter}: Props) => {
   const [baseSelected, setBaseSelected] = useState<number>(16);
   // const [registerHasChanged, setRegisterHasChanged] = useState<boolean[]>([]);
   useEffect(() => {
@@ -31,6 +32,14 @@ const ProgramData = ({allRegisterNames, allRegisters, prevAllRegisters}: Props) 
             </span>
           </li>
         )}
+        <li className="">
+            <span className='reg-name'>
+              PC
+            </span>
+            <span className='reg-val'>
+              {convertToBase(programCounter, baseSelected)}
+            </span>
+        </li>
         </span>
       </ul>
       <form className='buttons'>

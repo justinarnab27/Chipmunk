@@ -4,6 +4,8 @@ export interface ProgramStateUnParsed {
     displayMatrixAsString: string;
     allRegisterNames: string[];
     allRegisters: number[];
+    breakPoints: number[];
+    playPaused: boolean;
 }
 
 export interface ProgramStateParsed {
@@ -12,6 +14,8 @@ export interface ProgramStateParsed {
     displayMatrix: number[][];
     allRegisterNames: string[];
     allRegisters: number[];
+    programCounter: number;
+    breakPoints: Set<number>;
 }
 
 export type PostAction =
@@ -21,6 +25,7 @@ export type PostAction =
     | "Pause"
     | "Reset"
     | "Resume"
+    | "ToggleBreakPoint"
 // export interface ProgramStateParsed {
 //     programSource: number[];
 // }

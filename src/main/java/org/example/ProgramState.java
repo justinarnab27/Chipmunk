@@ -3,11 +3,13 @@ package org.example;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 import javax.swing.SwingUtilities;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.example.Debugger.BreakPoints;
 
 
 public class ProgramState {
@@ -20,12 +22,23 @@ public class ProgramState {
     @Getter
     @Setter
     private int programCounter;
+//    @Getter
+    private BreakPoints breakPoints;
 //    @JsonIgnore
     private Registers registers;
 //    @JsonIgnore
     private Memory memory;
     @JsonIgnore
     private DisplayCanvas displayCanvas;
+    @Getter
+    @Setter
+    private boolean playPaused;
+    // Set to false initially, becomes true when hitting a breakpoint
+    // becomes false after going over the break point
+    @Getter
+    @Setter
+    @JsonIgnore
+    private boolean goOverBreakPoint;
 //    @Getter
 //    @Setter
 //    @JsonIgnore
@@ -43,6 +56,8 @@ public class ProgramState {
         this.memory.loadProgram(source);      // Loads the program in memory from 0x200 onwards
         this.displayCanvas = new DisplayCanvas();
         this.programStack = new Stack<>();
+        this.breakPoints = new BreakPoints();
+        this.playPaused = false;
         if (!debugMode) {
             SwingUtilities.invokeLater(() -> this.displayCanvas.createAndShowGui());    // Creates gui
         }
@@ -130,5 +145,21 @@ public class ProgramState {
     }
     public Integer popFromStack() {
         return this.programStack.pop();
+    }
+
+    public Set<Integer> getBreakPoints() {
+        return this.breakPoints.getBps();
+    }
+
+    public void toggleBreakPoint(int ix) {
+        this.breakPoints.toggleBreakPoint(ix);
+    }
+
+    public void setBreakPoints(Set<Integer> bps) {
+        this.breakPoints.setBps(bps);
+    }
+
+    public boolean isABreakPoint(int lineNumber) {
+        return this.breakPoints.isABreakPoint(lineNumber);
     }
 }

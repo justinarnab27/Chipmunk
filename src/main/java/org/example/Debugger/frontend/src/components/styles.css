@@ -54,11 +54,37 @@
 .code li {
     /* background-color: yellow; */
     /* border: 1px solid blue; */
-    padding: 3px 0px;
+    /* padding: 3px 0px; */
     text-transform: uppercase;
     letter-spacing: 5px;
     display: flex;
     font-size: 15px;
+}
+
+.code li span.index {
+    padding: 3px 0px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.code li span.index svg {
+    color: transparent;
+}
+
+.code li span.breakpoint svg {
+    color: red;
+}
+
+.code li span.index.breakpoint:hover svg {
+    color: red;
+}
+
+.code li span.index:hover {
+    cursor: pointer;
+}
+
+.code li span.index:hover svg {
+    color: rgba(255, 0, 0, 0.1);
 }
 
 .code li.selected-line {
@@ -73,6 +99,7 @@
     justify-content: center;
     /* text-align: center; */
     background-color: pink;
+    padding: 3px 0px;
     /* position: sticky; */
 }
 
