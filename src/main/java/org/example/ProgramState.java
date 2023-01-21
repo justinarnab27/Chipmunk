@@ -102,6 +102,10 @@ public class ProgramState {
         return this.memory.getAddress(address);
     }
 
+    public void storeAddress(@NonNull final int address, @NonNull final int val) {
+        this.memory.storeAddress(address, val);
+    }
+
     public void printDisplayMatrix() {
         this.displayCanvas.printDisplayMatrix();
     }
@@ -161,5 +165,9 @@ public class ProgramState {
 
     public boolean isABreakPoint(int lineNumber) {
         return this.breakPoints.isABreakPoint(lineNumber);
+    }
+
+    public boolean compareRegister(@NonNull final int registerName, @NonNull final int value) {
+        return this.registers.equals(registerName, value);
     }
 }

@@ -1,5 +1,7 @@
 package org.example;
 
+import lombok.NonNull;
+
 public class Utility {
     /**
      * General Utilities
@@ -33,5 +35,25 @@ public class Utility {
 
     public static int covertPCToLine(int PC) {
         return (PC - 512) / 2;
+    }
+
+    public static int binarySanitizer8(@NonNull final int value) {
+        // Takes input of a 8-bit number and ensures value is
+        // always within bounds (-128 to 127)
+        int val;
+        val = value % 256;
+        if (val >= 256 / 2) val = val - 256;
+        if(val < - 256 / 2) val += 256;
+        return val;
+    }
+
+    public static int binarySanitizer16(@NonNull final int value) {
+        // Takes input of a 16-bit number and ensures value is
+        // always within bounds (-32768 to 32767)
+        int val;
+        val = value % 65536;
+        if (val >= 65536 / 2) val = val - 65536;
+        if(val < - 65536 / 2) val += 65536;
+        return val;
     }
 }

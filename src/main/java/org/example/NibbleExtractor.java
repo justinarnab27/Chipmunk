@@ -10,6 +10,7 @@ import org.example.Instructions.Display;
 import org.example.Instructions.Jump;
 import org.example.Instructions.JumpWithOffset;
 import org.example.Instructions.LeftShift;
+import org.example.Instructions.LoadMemory;
 import org.example.Instructions.LogicalXOR;
 import org.example.Instructions.RandomAnd;
 import org.example.Instructions.ReturnFromSubroutine;
@@ -21,6 +22,7 @@ import org.example.Instructions.Skip3;
 import org.example.Instructions.Skip4;
 import org.example.Instructions.Skip5;
 import org.example.Instructions.Skip9;
+import org.example.Instructions.StoreMemory;
 import org.example.Instructions.SubtractVXFromVY;
 import org.example.Instructions.SubtractVYFromVX;
 
@@ -210,9 +212,11 @@ public class NibbleExtractor {
                         break;
                     case 0x55:
                         System.out.println("Store and load memory");
+                        StoreMemory.execute(nibbles[1], programState);
                         break;
                     case 0x65:
                         System.out.println("Store and load memory");
+                        LoadMemory.execute(nibbles[1], programState);
                         break;
                     default:
                         throw new Exception(String.format("Unknown Instruction %02X%02X", firstByte, secondByte));

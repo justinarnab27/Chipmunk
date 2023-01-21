@@ -15,8 +15,13 @@ public class Memory {
         }
     }
 
-    public int getAddress(int address) {
+    public int getAddress(@NonNull final int address) {
         // Returns the byte stored at given address
         return Utility.byteToInt(this.ram[address]);
+    }
+
+    public void storeAddress(@NonNull final int address, @NonNull final int val) {
+        // Stores value val in given address
+        this.ram[address] = (byte) Utility.binarySanitizer8(val);
     }
 }

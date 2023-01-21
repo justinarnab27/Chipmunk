@@ -8,7 +8,7 @@ export const convertToBin = (byte: number): string => {
 }
 export const convertToDec = (byte: number): string => {
     let byteHex = byte.toString(10);
-    return "0".repeat(Math.max(3 - byteHex.length)) + byteHex;
+    return "0".repeat(Math.max(3 - byteHex.length,0)) + byteHex;
 }
 
 export const convertToBase = (byte: number, base: number) => {

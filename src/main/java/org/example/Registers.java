@@ -43,8 +43,13 @@ public class Registers {
     }
 
     public void setRegister(@NonNull final int registerName, @NonNull final int value) {
-        // Registers are 8-bit (16 in case of I) so value can't exceed 255 (65535)
-        this.reg.set(registerName, registerName == REGISTER_I ? value % 65536 : value % 256);
+        int val;
+        if (registerName != REGISTER_I) {
+            val = Utility.binarySanitizer8(value);
+        } else {
+            val = Utility.binarySanitizer16(value);
+        }
+        this.reg.set(registerName, val);
     }
 
     public void printRegisters() {
@@ -53,6 +58,16 @@ public class Registers {
             s += registerNames.get(i) + ": " + this.reg.get(i) + "    ";
         }
         System.out.println(s);
+    }
+
+    public boolean equals(@NonNull final int registerName, @NonNull final int value) {
+        int val;
+        if (registerName != REGISTER_I) {
+            val = Utility.binarySanitizer8(value);
+        } else {
+            val = Utility.binarySanitizer16(value);
+        }
+        return this.getRegister(registerName) == val;
     }
 //    public void printRegisters() {
 //        String s = "";

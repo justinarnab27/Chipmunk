@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19aa7fef-011c-4e0f-97e6-6a9a724de395" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/BreakPoints.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/LoadMemory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/StoreMemory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/DebuggerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/DebuggerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/programCode.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/programCode.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/programData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/programData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/utilities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/utilities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Skip3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Skip3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Skip4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Skip4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Skip5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Skip5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Skip9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Skip9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/NibbleExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/NibbleExtractor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ProgramState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Registers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Registers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Utility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
