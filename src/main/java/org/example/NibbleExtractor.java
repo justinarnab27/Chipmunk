@@ -6,6 +6,7 @@ import org.example.Instructions.BinaryAND;
 import org.example.Instructions.BinaryOR;
 import org.example.Instructions.CallSubroutine;
 import org.example.Instructions.Clear;
+import org.example.Instructions.ConvertToDecimal;
 import org.example.Instructions.Display;
 import org.example.Instructions.Jump;
 import org.example.Instructions.JumpWithOffset;
@@ -209,6 +210,7 @@ public class NibbleExtractor {
                         break;
                     case 0x33:
                         System.out.println("Binary-coded decimal conversion");
+                        ConvertToDecimal.execute(nibbles[1], programState);
                         break;
                     case 0x55:
                         System.out.println("Store and load memory");
