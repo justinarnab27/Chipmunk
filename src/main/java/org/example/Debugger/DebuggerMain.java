@@ -80,7 +80,7 @@ public class DebuggerMain {
                 handleNext();
             }
             if (sleepBetweenInstructions) {
-                Thread.sleep(100);
+                Thread.sleep(10);
             }
         }
     }

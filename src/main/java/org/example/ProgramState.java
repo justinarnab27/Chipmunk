@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.SwingUtilities;
 import lombok.Getter;
 import lombok.NonNull;
@@ -46,6 +48,10 @@ public class ProgramState {
     //TODO: This might need to be turned into a separate class if it gets sufficiently complicated
     private Stack<Integer> programStack;
 
+    private DelayTimer delayTimer;
+
+    private SoundTimer soundTimer;
+
 
 
     public ProgramState(@NonNull final byte[] source, boolean debugMode) {
@@ -58,6 +64,11 @@ public class ProgramState {
         this.programStack = new Stack<>();
         this.breakPoints = new BreakPoints();
         this.playPaused = false;
+        Timer timer = new Timer();
+        this.delayTimer = new DelayTimer();
+        this.soundTimer = new SoundTimer();
+        timer.schedule(delayTimer, 0, 17);
+        timer.schedule(soundTimer, 0, 17);
         if (!debugMode) {
             SwingUtilities.invokeLater(() -> this.displayCanvas.createAndShowGui());    // Creates gui
         }
@@ -169,5 +180,17 @@ public class ProgramState {
 
     public boolean compareRegister(@NonNull final int registerName, @NonNull final int value) {
         return this.registers.equals(registerName, value);
+    }
+
+    public void setDelayTimer(@NonNull final int val) {
+        DelayTimer.setCount(val);
+    }
+
+    public int getDelayTimer() {
+        return DelayTimer.getCount();
+    }
+
+    public void setSoundTimer(@NonNull final int val) {
+        SoundTimer.setCount(val);
     }
 }

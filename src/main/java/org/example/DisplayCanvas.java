@@ -51,7 +51,7 @@ public class DisplayCanvas extends JPanel {
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.getContentPane().add(this);
-        frame.setSize(new Dimension(width, height));
+        frame.setSize(new Dimension(width, height + 25));
         frame.setVisible(true);
     }
 

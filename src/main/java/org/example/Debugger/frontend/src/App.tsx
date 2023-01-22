@@ -71,7 +71,7 @@ const App = () => {
     // setTimeout(
     setInterval(
         () => getProgramState(),
-        500
+        100
       );
   }, [])
   

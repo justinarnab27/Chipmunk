@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.Instructions.Add;
+import org.example.Instructions.AddToI;
 import org.example.Instructions.AddWithCarry;
 import org.example.Instructions.BinaryAND;
 import org.example.Instructions.BinaryOR;
@@ -11,12 +12,15 @@ import org.example.Instructions.Display;
 import org.example.Instructions.Jump;
 import org.example.Instructions.JumpWithOffset;
 import org.example.Instructions.LeftShift;
+import org.example.Instructions.LoadDelayTimer;
 import org.example.Instructions.LoadMemory;
 import org.example.Instructions.LogicalXOR;
 import org.example.Instructions.RandomAnd;
 import org.example.Instructions.ReturnFromSubroutine;
 import org.example.Instructions.RightShift;
+import org.example.Instructions.SetDelayTimer;
 import org.example.Instructions.SetIndex;
+import org.example.Instructions.SetSoundTimer;
 import org.example.Instructions.SetToNN;
 import org.example.Instructions.SetToVY;
 import org.example.Instructions.Skip3;
@@ -191,16 +195,20 @@ public class NibbleExtractor {
             case 0xF:
                 switch (Utility.combineTwoNibbles(nibbles[2], nibbles[3])) {
                     case 0x07:
-                        System.out.println("Timers");
+                        System.out.println("Load Delay Timer");
+                        LoadDelayTimer.execute(nibbles[1], programState);
                         break;
                     case 0x15:
-                        System.out.println("Timers");
+                        System.out.println("Set Delay Timer");
+                        SetDelayTimer.execute(nibbles[1], programState);
                         break;
                     case 0x18:
-                        System.out.println("Timers");
+                        System.out.println("Set Sound Timer");
+                        SetSoundTimer.execute(nibbles[1], programState);
                         break;
                     case 0x1E:
                         System.out.println("Add to index");
+                        AddToI.execute(nibbles[1], programState);
                         break;
                     case 0x0A:
                         System.out.println("Get key");
