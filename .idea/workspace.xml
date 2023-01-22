@@ -5,20 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19aa7fef-011c-4e0f-97e6-6a9a724de395" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DelayTimer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/AddToI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/LoadDelayTimer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SetDelayTimer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SetSoundTimer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SoundTimer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SkipIfKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SkipIfNotKey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/DebuggerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/DebuggerMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DisplayCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DisplayCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/utilities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/utilities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DelayTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DelayTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/NibbleExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/NibbleExtractor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgramLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ProgramLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ProgramState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SourceReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SourceReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SoundTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SoundTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Utility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

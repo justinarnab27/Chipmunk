@@ -26,6 +26,8 @@ export type PostAction =
     | "Reset"
     | "Resume"
     | "ToggleBreakPoint"
+    | "KeyUp"
+    | "KeyDown"
 // export interface ProgramStateParsed {
 //     programSource: number[];
 // }

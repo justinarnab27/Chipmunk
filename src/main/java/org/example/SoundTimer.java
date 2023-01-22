@@ -13,6 +13,6 @@ public class SoundTimer extends TimerTask {
         if (count > 0) {
             count--;
         }
-        System.out.println("Sound Timer Value: " + count);
+//        System.out.println("Sound Timer Value: " + count);
     }
 }

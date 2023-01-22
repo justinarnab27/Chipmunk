@@ -21,7 +21,7 @@ public class ProgramLoop {
             System.out.println("Program Counter: " + programState.getProgramCounter());
             programState.printRegisters();
             if (sleepBetweenInstructions) {
-                Thread.sleep(10);
+                Thread.sleep(2);
             }
 //            MAX_ITER--;
         }

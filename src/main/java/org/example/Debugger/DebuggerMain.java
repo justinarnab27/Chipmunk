@@ -80,7 +80,7 @@ public class DebuggerMain {
                 handleNext();
             }
             if (sleepBetweenInstructions) {
-                Thread.sleep(10);
+                Thread.sleep(2);
             }
         }
     }
@@ -154,6 +154,15 @@ public class DebuggerMain {
                 int ix = Integer.parseInt(actions[1]);
                 System.out.println("Toggle Break Point " + ix);
                 handleToggleBreakPoint(ix);
+                break;
+            case "KeyUp":
+//                actions[1]
+                System.out.println("KeyUp " + actions[1]);
+                programState.setKeyBeingPressed(-1);
+                break;
+            case "KeyDown":
+                System.out.println("KeyDown " + actions[1]);
+                programState.setKeyBeingPressed(Integer.parseInt(actions[1]));
                 break;
             default:
                 System.out.println("This is a green apple!");

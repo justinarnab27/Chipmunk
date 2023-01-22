@@ -27,6 +27,8 @@ import org.example.Instructions.Skip3;
 import org.example.Instructions.Skip4;
 import org.example.Instructions.Skip5;
 import org.example.Instructions.Skip9;
+import org.example.Instructions.SkipIfKey;
+import org.example.Instructions.SkipIfNotKey;
 import org.example.Instructions.StoreMemory;
 import org.example.Instructions.SubtractVXFromVY;
 import org.example.Instructions.SubtractVYFromVX;
@@ -190,7 +192,18 @@ public class NibbleExtractor {
                 Display.execute(nibbles[1], nibbles[2], nibbles[3], programState);
                 break;
             case 0xE:
-                System.out.println("Skip if key");
+                switch (Utility.combineTwoNibbles(nibbles[2], nibbles[3])) {
+                    case 0x9E:
+                        System.out.println("Skip if key");
+                        SkipIfKey.execute(nibbles[1], programState);
+                        break;
+                    case 0xA1:
+                        System.out.println("Skip if not key");
+                        SkipIfNotKey.execute(nibbles[1], programState);
+                        break;
+                    default:
+                        throw new Exception(String.format("Unknown Instruction %02X%02X", firstByte, secondByte));
+                }
                 break;
             case 0xF:
                 switch (Utility.combineTwoNibbles(nibbles[2], nibbles[3])) {

@@ -4,6 +4,7 @@ import Display from './components/display';
 import ProgramCode from './components/programCode';
 import ProgramData from './components/programData';
 import { PostAction, ProgramStateParsed, ProgramStateUnParsed } from './models';
+import { processKey } from './utilities';
 
 const App = () => {
   const [programStateParsed, setProgramStateParsed] = useState<ProgramStateParsed>({
@@ -67,12 +68,28 @@ const App = () => {
         })
     getProgramState();
   }
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    // console.log("KeyDown: " + e.key);
+    let keyVal = processKey(e.key);
+    // console.log(keyVal);
+    if (keyVal !== -1) handlePostMethods('KeyDown', keyVal); 
+  }
+  const handleKeyUp = (e: KeyboardEvent) => {
+    // console.log("KeyUp: " + e.key);
+    let keyVal = processKey(e.key);
+    // console.log(keyVal);
+    if (keyVal !== -1) handlePostMethods('KeyUp', keyVal); 
+    // handlePostMethods('KeyUp', null, e.key);
+  }
   useEffect(() => {
     // setTimeout(
     setInterval(
         () => getProgramState(),
         100
       );
+      document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('keyup', handleKeyUp);
   }, [])
   
 

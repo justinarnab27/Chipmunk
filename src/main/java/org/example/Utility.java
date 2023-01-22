@@ -56,4 +56,12 @@ public class Utility {
         if(val < - 65536 / 2) val += 65536;
         return val;
     }
+
+    public static int processKey(@NonNull final String key) {
+        if (key.matches("\\d")) {
+            return Integer.parseInt(key);
+        } else {
+            return key.charAt(0) - 'a' + 10;
+        }
+    }
 }

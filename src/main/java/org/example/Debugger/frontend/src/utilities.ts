@@ -21,3 +21,12 @@ export const convertToBase = (byte: number, base: number) => {
             return convertToHex(byte);
     }
 }
+
+export const processKey = (key: string): number => {
+    console.log(key);
+    if (key.match(/^\d$/)) {
+        return parseInt(key);
+    } else if (key.match(/^[a-f]$/)){
+        return key.charCodeAt(0) - 'a'.charCodeAt(0) + 10;
+    } else return -1;
+}
