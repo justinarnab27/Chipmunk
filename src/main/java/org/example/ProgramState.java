@@ -52,10 +52,6 @@ public class ProgramState {
 
     private SoundTimer soundTimer;
 
-    @Getter
-    @Setter
-    private int keyBeingPressed = -1;
-
     public ProgramState(@NonNull final byte[] source, boolean debugMode) {
         this.programCounter = Constants.PC_START;   // PC starts at 0x200 in memory
         this.registers = new Registers();
@@ -196,4 +192,11 @@ public class ProgramState {
         SoundTimer.setCount(val);
     }
 
+    public int getKeyBeingPressed() {
+        return this.displayCanvas.getKeyBeingPressed();
+    }
+
+    public void setKeyBeingPressed(int key) {
+        this.displayCanvas.setKeyBeingPressed(key);
+    }
 }
