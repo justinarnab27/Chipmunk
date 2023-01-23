@@ -44,6 +44,7 @@ public class DisplayCanvas extends JPanel {
 //        this.printDisplayMatrix();
         for (int i = 0; i < this.displayMatrix.length; ++i) {
             for (int j = 0; j < this.displayMatrix[i].length; ++j) {
+//            for (int j = this.displayMatrix[i].length - 1; j >= 0 ; --j) {
                 if (this.displayMatrix[i][j] == 1) {
                     g.setColor(Color.WHITE);
                 } else {

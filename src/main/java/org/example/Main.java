@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Main {
     //TODO: Change many of the print statements to logs
     public static void main(String[] args) throws Exception {
-        boolean debugMode = false;
+        boolean debugMode = true;
 
         SourceReader sc = new SourceReader();
         byte[] array = sc.read("");

@@ -13,10 +13,14 @@ public class SourceReader {
          * Takes a binary file as input (inputFile) and returns
          * an array of bytes
          */
-        //IBM Logo.ch8
-        inputFile = "/Users/arnab/Downloads/Pong [Paul Vervalin, 1990].ch8";
+        //
+//        inputFile = "/Users/arnab/Downloads/Pong [Paul Vervalin, 1990].ch8";
 //        inputFile = "/Users/arnab/Downloads/Tetris [Fran Dachille, 1991].ch8";
 //        inputFile = "/Users/arnab/Downloads/test_opcode.ch8";
+//        inputFile = "/Users/arnab/Downloads/IBM Logo.ch8";
+        inputFile = "/Users/arnab/Downloads/tetris.rom";
+//        inputFile = "/Users/arnab/Downloads/Tic-Tac-Toe [David Winter].ch8";
+
 
         try {
             byte[] array = Files.readAllBytes(Paths.get(inputFile));

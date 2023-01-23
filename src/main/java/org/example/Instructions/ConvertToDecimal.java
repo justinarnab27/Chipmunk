@@ -15,12 +15,14 @@ public class ConvertToDecimal {
         int VI = programState.getRegister(Constants.REGISTER_I);
         Integer VX = programState.getRegister(X);
         VX = VX < 0 ? 256 + VX : VX;
-        System.out.println("VX: " + VX);
+//        System.out.println("VX: " + VX);
         String[] VXString = VX.toString().split("");
-//        System.out.println("VX String: " + VXString);
-        for (int i = 0; i < VXString.length; ++i) {
-            System.out.println(VXString[i]);
-            programState.storeAddress(VI + i, Integer.parseInt(VXString[i]));
+        int[] VXDec = new int[] {0, 0, 0};
+        for (int i = VXString.length - 1; i >= 0; --i) {
+            VXDec[3 + i - VXString.length] = Integer.parseInt(VXString[i]);
+        }
+        for (int i = 0; i < VXDec.length; ++i) {
+            programState.storeAddress(VI + i, VXDec[i]);
         }
         programState.incrementCounter();
     }
