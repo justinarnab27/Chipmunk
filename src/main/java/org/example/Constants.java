@@ -18,6 +18,6 @@ public class Constants {
 
     public static final int HEIGHT_IN_PIXELS = 32;   //Height of the screen in pixels
 
-
+    public static final int FONT_MEMORY_LOCATION = 0x50;    // Starting address of memory location of fonts
 }
 

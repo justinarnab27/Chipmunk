@@ -13,6 +13,7 @@ import org.example.Instructions.Jump;
 import org.example.Instructions.JumpWithOffset;
 import org.example.Instructions.LeftShift;
 import org.example.Instructions.LoadDelayTimer;
+import org.example.Instructions.LoadFont;
 import org.example.Instructions.LoadMemory;
 import org.example.Instructions.LogicalXOR;
 import org.example.Instructions.RandomAnd;
@@ -228,6 +229,7 @@ public class NibbleExtractor {
                         break;
                     case 0x29:
                         System.out.println("Font character");
+                        LoadFont.execute(nibbles[1], programState);
                         break;
                     case 0x33:
                         System.out.println("Binary-coded decimal conversion");

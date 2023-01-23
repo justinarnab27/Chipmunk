@@ -62,6 +62,7 @@ public class ProgramState {
         this.programStack = new Stack<>();
         this.breakPoints = new BreakPoints();
         this.playPaused = false;
+        loadFont();
         Timer timer = new Timer();
         this.delayTimer = new DelayTimer();
         this.soundTimer = new SoundTimer();
@@ -71,6 +72,30 @@ public class ProgramState {
             SwingUtilities.invokeLater(() -> this.displayCanvas.createAndShowGui());    // Creates gui
         }
         //TODO: Also needs stack
+    }
+
+    private void loadFont() {
+        int[] fonts = new int[]{0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
+                0x20, 0x60, 0x20, 0x20, 0x70, // 1
+                0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
+                0xF0, 0x10, 0xF0, 0x10, 0xF0, // 3
+                0x90, 0x90, 0xF0, 0x10, 0x10, // 4
+                0xF0, 0x80, 0xF0, 0x10, 0xF0, // 5
+                0xF0, 0x80, 0xF0, 0x90, 0xF0, // 6
+                0xF0, 0x10, 0x20, 0x40, 0x40, // 7
+                0xF0, 0x90, 0xF0, 0x90, 0xF0, // 8
+                0xF0, 0x90, 0xF0, 0x10, 0xF0, // 9
+                0xF0, 0x90, 0xF0, 0x90, 0x90, // A
+                0xE0, 0x90, 0xE0, 0x90, 0xE0, // B
+                0xF0, 0x80, 0x80, 0x80, 0xF0, // C
+                0xE0, 0x90, 0x90, 0x90, 0xE0, // D
+                0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
+                0xF0, 0x80, 0xF0, 0x80, 0x80  // F]
+        };
+
+        for (int i = 0; i < fonts.length; ++i) {
+            this.memory.storeAddress(Constants.FONT_MEMORY_LOCATION + i, fonts[i]);
+        }
     }
 
     public void incrementCounter() {

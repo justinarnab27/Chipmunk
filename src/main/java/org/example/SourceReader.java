@@ -14,8 +14,10 @@ public class SourceReader {
          * an array of bytes
          */
         //IBM Logo.ch8
-        inputFile = "/Users/arnab/Downloads/Tetris [Fran Dachille, 1991].ch8";
+        inputFile = "/Users/arnab/Downloads/Pong [Paul Vervalin, 1990].ch8";
+//        inputFile = "/Users/arnab/Downloads/Tetris [Fran Dachille, 1991].ch8";
 //        inputFile = "/Users/arnab/Downloads/test_opcode.ch8";
+
         try {
             byte[] array = Files.readAllBytes(Paths.get(inputFile));
             return array;
