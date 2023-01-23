@@ -138,7 +138,7 @@ public class DisplayCanvas extends JPanel {
             if (e.getKeyCode() >= 48 && e.getKeyCode() <= 57) {
                 DisplayCanvas.this.setKeyBeingPressed(e.getKeyCode() - 48);
             } else if(e.getKeyCode() >= 65 && e.getKeyCode() <= 70) {
-                DisplayCanvas.this.setKeyBeingPressed(e.getKeyCode() - 65);
+                DisplayCanvas.this.setKeyBeingPressed(e.getKeyCode() - 65 + 10);
             }
         }
 
