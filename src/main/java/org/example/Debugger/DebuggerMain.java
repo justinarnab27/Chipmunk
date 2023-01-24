@@ -1,10 +1,8 @@
 package org.example.Debugger;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.Set;
-import lombok.Getter;
 import org.example.Instruction;
 import org.example.NibbleExtractor;
 import org.example.ProgramState;
@@ -23,7 +21,6 @@ public class DebuggerMain {
     static ProgramState programState;
     static NibbleExtractor nibbleExtractor;
     static boolean autoPlay = false;
-//    static boolean playPaused = false;
     private static byte[] programSource;
     public void startDebugger(byte[] source) throws Exception {
         programSource = source;
@@ -31,37 +28,25 @@ public class DebuggerMain {
         builder.headless(false).run();
         programState = new ProgramState(programSource, true);
         this.nibbleExtractor = new NibbleExtractor();
-
-
-//        sandClass sand_class = new sandClass();
-
-
         boolean sleepBetweenInstructions = true;  // TODO: Should be moved to console args map
         System.out.println("Started Running the Program...");
-//        System.out.println("Creating Program State...");
         // TODO: Replace with dependency injection
-//        ProgramState programState = new ProgramState(this.programSource, false);
-//        NibbleExtractor nibbleExtractor = new NibbleExtractor();
         int MAX_ITER = 100;  // Program stops after MAX_ITER iterations
         if(sleepBetweenInstructions) return;
         while(MAX_ITER > 0) {
             Instruction instruction = programState.getNextInstruction();
             nibbleExtractor.extract(instruction, programState);
-//            System.out.println("Program Counter: " + programState.getProgramCounter());
             programState.printRegisters();
             if (sleepBetweenInstructions) {
                 Thread.sleep(20);
             }
             MAX_ITER--;
-//            count++;
-//            System.out.println("A " + count);
         }
     }
 
     public void handleNext() throws Exception {
         Instruction instruction = programState.getNextInstruction();
         nibbleExtractor.extract(instruction, programState);
-//            System.out.println("Program Counter: " + programState.getProgramCounter());
         programState.printRegisters();
     }
 
@@ -98,22 +83,12 @@ public class DebuggerMain {
 //static int count = 0;
     @CrossOrigin
     @GetMapping("/")
-    public ProgramState getDisplayMatrix() throws JsonProcessingException {
-//        programState
-//        count++;
-//        System.out.println("B " + count);
-//        return count;
-//        System.out.println("HAD BEEN INVOKED!!!!!");
+    public ProgramState getDisplayMatrix() {
         if (Objects.isNull(programState)) {
             return null;
-//            return new JSONObject("Nothing!");
-//            return new JSONObject("{val: Nothing!}");
         } else {
             ObjectMapper objectMapper = new ObjectMapper();
             return programState;
-//            return new JSONObject(objectMapper.writeValueAsString(programState));
-//            return programState.getDisplayMatrixAsString();
-//            return new JSONObject("{val: HIIII}");
         }
     }
 
@@ -156,7 +131,6 @@ public class DebuggerMain {
                 handleToggleBreakPoint(ix);
                 break;
             case "KeyUp":
-//                actions[1]
                 System.out.println("KeyUp " + actions[1]);
                 programState.setKeyBeingPressed(-1);
                 break;
@@ -167,7 +141,5 @@ public class DebuggerMain {
             default:
                 System.out.println("This is a green apple!");
         }
-//        return programState;
-//        executeNextInstruction();
     }
 }

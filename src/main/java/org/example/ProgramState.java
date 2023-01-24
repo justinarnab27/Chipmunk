@@ -2,11 +2,9 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.SwingUtilities;
 import lombok.Getter;
 import lombok.NonNull;
@@ -24,11 +22,8 @@ public class ProgramState {
     @Getter
     @Setter
     private int programCounter;
-//    @Getter
     private BreakPoints breakPoints;
-//    @JsonIgnore
     private Registers registers;
-//    @JsonIgnore
     private Memory memory;
     @JsonIgnore
     private DisplayCanvas displayCanvas;
@@ -41,9 +36,6 @@ public class ProgramState {
     @Setter
     @JsonIgnore
     private boolean goOverBreakPoint;
-//    @Getter
-//    @Setter
-//    @JsonIgnore
     byte[] programSource;
     //TODO: This might need to be turned into a separate class if it gets sufficiently complicated
     private Stack<Integer> programStack;
@@ -71,7 +63,6 @@ public class ProgramState {
         if (!debugMode) {
             SwingUtilities.invokeLater(() -> this.displayCanvas.createAndShowGui());    // Creates gui
         }
-        //TODO: Also needs stack
     }
 
     private void loadFont() {

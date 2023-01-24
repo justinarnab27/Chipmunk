@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Display from './components/display';
 import ProgramCode from './components/programCode';
@@ -19,18 +19,12 @@ const App = () => {
   const [prevAllRegisters, setPrevAllRegisters] = useState<number[]>([]);
   const [autoPlayPaused, setAutoPlayPaused] = useState<boolean>(false);
   const processProgramState = (programeState: ProgramStateUnParsed) => {
-    // const arr = new Array() 
     setAutoPlayPaused(programeState.playPaused);
     const lines = programeState.displayMatrixAsString.split('\n');
     const arr: number[][] = [];
     for (let line of lines) {
-      // console.log(line.split(' '));
       arr.push(line.split(' ').slice(0,-1).map(c => parseInt(c)));
-      // arr.push()
     }
-
-    // console.log("AAAAAAA " + programStateParsed.allRegisters);
-    // console.log(prevAllRegisters.some((val, ix) => val !== programeState.allRegisters[ix]));
     
     const newState: ProgramStateParsed = {programSource: programeState.programSource,
           lineNumber: Math.floor((programeState.programCounter - 512)/2),
@@ -41,9 +35,7 @@ const App = () => {
           breakPoints: new Set<number>(programeState.breakPoints)
         };
     setProgramStateParsed((prevState) => {
-      // setPrevAllRegisters(prevState.allRegisters);
       if(programeState.allRegisters.some((val, ix) => val !== prevState.allRegisters[ix])) {
-        // console.log("hiiiiii");
         setPrevAllRegisters(prevState.allRegisters);
       }
       return newState;
@@ -56,7 +48,6 @@ const App = () => {
             .then((json) => {
                 json.json()
                     .then(t => {
-                      // console.log(t);
                       processProgramState(t);
                     })});
   }
@@ -70,20 +61,14 @@ const App = () => {
   }
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    // console.log("KeyDown: " + e.key);
     let keyVal = processKey(e.key);
-    // console.log(keyVal);
     if (keyVal !== -1) handlePostMethods('KeyDown', keyVal); 
   }
   const handleKeyUp = (e: KeyboardEvent) => {
-    // console.log("KeyUp: " + e.key);
     let keyVal = processKey(e.key);
-    // console.log(keyVal);
     if (keyVal !== -1) handlePostMethods('KeyUp', keyVal); 
-    // handlePostMethods('KeyUp', null, e.key);
   }
   useEffect(() => {
-    // setTimeout(
     setInterval(
         () => getProgramState(),
         100

@@ -1,10 +1,8 @@
 package org.example.Instructions;
 
-import java.util.ArrayList;
 import lombok.NonNull;
 import org.example.Constants;
 import org.example.ProgramState;
-import org.example.Utility;
 
 public class ConvertToDecimal {
     private ConvertToDecimal() {}
@@ -15,7 +13,6 @@ public class ConvertToDecimal {
         int VI = programState.getRegister(Constants.REGISTER_I);
         Integer VX = programState.getRegister(X);
         VX = VX < 0 ? 256 + VX : VX;
-//        System.out.println("VX: " + VX);
         String[] VXString = VX.toString().split("");
         int[] VXDec = new int[] {0, 0, 0};
         for (int i = VXString.length - 1; i >= 0; --i) {

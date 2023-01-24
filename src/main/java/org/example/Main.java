@@ -1,15 +1,7 @@
 package org.example;
 
-import java.net.URI;
 import org.example.Debugger.DebuggerMain;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-//@SpringBootApplication
-//@RestController
 public class Main {
     //TODO: Change many of the print statements to logs
     public static void main(String[] args) throws Exception {
@@ -26,17 +18,9 @@ public class Main {
         if (debugMode) {
             DebuggerMain debugger = new DebuggerMain();
             debugger.startDebugger(array);
-//            SpringApplicationBuilder builder = new SpringApplicationBuilder(Main.class);
-//            builder.headless(false).run(args);
-//            SpringApplication.run(Main.class, args);
         } else {
             ProgramLoop programLoop = new ProgramLoop(array);
             programLoop.run();
         }
     }
-
-//    @GetMapping("/")
-//    public String hello() {
-//        return "<html><head><title>Spring</title></head><body><h1>Hello, Chipmunk!</h1></body></html>";
-//    }
 }

@@ -14,7 +14,6 @@ public class ProgramLoop {
         // TODO: Replace with dependency injection
         ProgramState programState = new ProgramState(this.programSource, false);
         NibbleExtractor nibbleExtractor = new NibbleExtractor();
-//        int MAX_ITER = 100;  // Program stops after MAX_ITER iterations
         while(true) {
             Instruction instruction = programState.getNextInstruction();
             nibbleExtractor.extract(instruction, programState);
@@ -23,7 +22,6 @@ public class ProgramLoop {
             if (sleepBetweenInstructions) {
                 Thread.sleep(2);
             }
-//            MAX_ITER--;
         }
     }
 }

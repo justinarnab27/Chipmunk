@@ -1,7 +1,6 @@
 package org.example.Instructions;
 
 import lombok.NonNull;
-import org.example.Constants;
 import org.example.ProgramState;
 
 public class SkipIfKey {

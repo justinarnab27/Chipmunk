@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PostAction } from '../models';
 import { convertToBin, convertToDec, convertToHex } from '../utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,7 +15,6 @@ interface Props {
 
 const ProgramCode = ({programSource, lineNumber, handlePostMethods, breakPoints, autoPlayPaused, setAutoPlayPaused}: Props) => {
   const [autoPlay, setAutoPlay] = useState<boolean>(false);
-  // const [breakPoints, setBreakPoints] = useState<Set<number>>(new Set<number>());
   const [baseSelected, setBaseSelected] = useState<number>(16);
   const [currentInstruction, setCurrentInstruction] = useState<number>(0);
   const [instructionArray, setInstructionArray] = useState<string[]>([]);
@@ -38,7 +37,6 @@ const ProgramCode = ({programSource, lineNumber, handlePostMethods, breakPoints,
     }
     setInstructionArray(arr);
   }
-  // setCounter(ccounter => ounter + 1setCounter(counter + 1))
   useEffect(() => {
     changeInstructionsToBase(programSource, baseSelected);
   }, [programSource, baseSelected])
@@ -46,19 +44,7 @@ const ProgramCode = ({programSource, lineNumber, handlePostMethods, breakPoints,
     setCurrentInstruction(lineNumber)
     , [lineNumber]
   )
-
-  // const toggleBreakPoint = (ix: number) => {
-  //   let s = new Set(breakPoints);
-  //   if(breakPoints.has(ix)) {
-  //     s.delete(ix);
-  //   } else {
-  //     s.add(ix);
-  //   }
-  //   setBreakPoints(s);
-  // }
-
-  // useEffect(() => console.log(breakPoints));
-
+  
   return (
     <div className='code-container'>
       <div className='code'>
@@ -67,9 +53,6 @@ const ProgramCode = ({programSource, lineNumber, handlePostMethods, breakPoints,
           {instructionArray.map(
             (item, ix) => 
             <li className={currentInstruction === ix ? 'selected-line' : ''} key={ix.toString() + item.toString()}>
-              {/* <span>
-
-              </span> */}
               <span className={'index' + (breakPoints.has(ix) ? ' breakpoint' : '')} onClick={() => handlePostMethods("ToggleBreakPoint", ix)}>
                 <FontAwesomeIcon icon={faCircle}/>
                 {ix}

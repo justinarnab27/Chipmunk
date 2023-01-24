@@ -28,6 +28,3 @@ export type PostAction =
     | "ToggleBreakPoint"
     | "KeyUp"
     | "KeyDown"
-// export interface ProgramStateParsed {
-//     programSource: number[];
-// }

@@ -52,9 +52,7 @@ public class NibbleExtractor {
     }
 
     public void extract(Instruction instruction, ProgramState programState) throws Exception {
-        //TODO: Maybe make a separate Instructions class for instructions
         //TODO: Give exception a custom type
-        //X Y N
         /** Takes instruction as input and current program state
          * calls the necessary function to excute the instruction
          * and modify the state

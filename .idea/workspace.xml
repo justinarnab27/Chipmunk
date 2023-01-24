@@ -5,17 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19aa7fef-011c-4e0f-97e6-6a9a724de395" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/rom/Chip8 Picture.ch8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rom/IBM Logo.ch8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rom/Pong [Paul Vervalin, 1990].ch8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rom/Tetris [Fran Dachille, 1991].ch8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rom/Tic-Tac-Toe [David Winter].ch8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rom/test_opcode.ch8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/beep-sound-8333.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SourceReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SourceReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/sand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ConsoleArgs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/DebuggerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/DebuggerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/display.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/display.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/programCode.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/programCode.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/components/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Debugger/frontend/src/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DelayTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DelayTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DisplayCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DisplayCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/ConvertToDecimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/ConvertToDecimal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Display.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/RandomAnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/RandomAnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/Set.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SetDelayTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SetDelayTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SkipIfKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SkipIfKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SkipIfNotKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Instructions/SkipIfNotKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/NibbleExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/NibbleExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgramLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ProgramLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgramStack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ProgramState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Registers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Registers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SoundTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SoundTimer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

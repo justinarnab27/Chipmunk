@@ -8,7 +8,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import lombok.Getter;
 import lombok.Setter;
 
 public class SoundTimer extends TimerTask {
@@ -18,7 +17,7 @@ public class SoundTimer extends TimerTask {
     @Override
     public void run() {
         if (count > 0) {
-            String soundName = "/Users/arnab/Downloads/beep-sound-8333.wav";
+            String soundName = "src/main/resources/beep-sound-8333.wav";
             AudioInputStream audioInputStream = null;
             try {
                 audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
@@ -41,7 +40,6 @@ public class SoundTimer extends TimerTask {
                 throw new RuntimeException(e);
             }
             clip.start();
-            System.out.println("Sound Timer Value: " + count);
             count--;
         }
 

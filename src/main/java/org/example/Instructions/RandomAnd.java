@@ -11,8 +11,6 @@ public class RandomAnd {
         // puts the result in VX
         Random random = new Random();
         int randVal = random.nextInt(256);
-//        System.out.println("CHICKENS " + randVal);
-//        int randVal = 219; // get only squares in tetris
         programState.setRegister(X, NN & randVal);
         programState.incrementCounter();
     }

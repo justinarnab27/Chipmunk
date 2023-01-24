@@ -5,21 +5,14 @@
 
 #canvas {
     background-color: black;
-    /* border: 5px solid black; */
 }
 
 .code-container {
-    /* resize: both; */
-    /* height: 70vh; */
-    /* overflow: hidden; */
-    /* resize: both; */
     flex: 1;
 }
 
 .buttons {
-    /* background-color: red; */
     display: flex;
-    /* justify-content: space-between; */
     justify-content: flex-start;
     margin: 6px 9px;
 }
@@ -28,20 +21,14 @@
     font-family: source-code-pro;
     margin: 0 10px;
     font-size: 15px;
-    /* background-color: black; */
-    /* color: white; */
     border: none;
     text-transform: uppercase;
 }
 
 .code {
-    /* background-color: red; */
     border: 2px solid black;
     height: 70vh;
-    /* height: 80%; */
-    /* resize: both; */
     overflow-y: scroll;
-    /* width: st; */
 }
 
 .code ul {
@@ -52,9 +39,6 @@
 }
 
 .code li {
-    /* background-color: yellow; */
-    /* border: 1px solid blue; */
-    /* padding: 3px 0px; */
     text-transform: uppercase;
     letter-spacing: 5px;
     display: flex;
@@ -97,29 +81,21 @@
     letter-spacing: normal;
     display: flex;
     justify-content: center;
-    /* text-align: center; */
     background-color: pink;
     padding: 3px 0px;
-    /* position: sticky; */
 }
 
 .code li .index {
-    /* background-color: red; */
     flex: 1;
     letter-spacing: normal;
 }
 
 .code li .text {
-    /* background-color: aqua; */
     flex: 2;
 }
 
 .code-container .controls {
     display: flex;
-    /* background-color: red; */
-    /* flex-wrap: nowrap; */
-    /* justify-content:  */
-    /* flex-grow: 1; */
     margin: 7px 0px;
     margin-bottom: 30px;
 }
@@ -129,8 +105,6 @@
     width: 40px;
     display: flex;
     justify-content: center;
-    /* flex:1; */
-    /* flex-basis: content; */
     background-color: blueviolet;
     color: beige;
     letter-spacing: 3px;
@@ -139,36 +113,20 @@
     padding: 10px 30px;
     border-radius: 5px;
     font-weight: 600;
-    /* width: fit-content;
-    display: flex;
-    flex-wrap: nowrap; */
 }
 
 .code-container .controls button:hover {
-    /* outline: 2px solid yellow; */
-    /* background-color: #5c2be2; */
     cursor: pointer;
 }
 
 .code-container .controls button:active {
-    /* outline: 2px solid yellow; */
-    /* transition-property: background-color; */
-    /* transition-delay: 0ms;
-    transition-duration: 500ms; */
     background-color: #5c2be2;
-    /* cursor: pointer; */
 }
 
 
 .data {
-
     border: 2px solid black;
-    /* background-color: aqua; */
     flex:1;
-    /* letter-spacing: 5px;
-    /* margin: 10px; */
-    /* padding: 30px;  */
-    /* min-width: 500px; */
 }
 
 .data .registers {
@@ -195,30 +153,22 @@
     justify-content: center;
     margin: 0;
     margin-bottom: 3px;
-    /* padding: 5px; */
 }
 
 .data .registers li .reg-name {
     flex: 1;
-    /* background-color: blueviolet; */
 }
 
 .data .registers li .reg-val {
-    /* background-color: gold; */
     flex: 2;
 }
 
 .data .registers li.changed {
-    /* background-color: aqua; */
-    /* transition-delay: 1s; */
     border-radius: 5px;
     box-shadow:  0 0 7px 1px #ffdf80;
-    /* outline: aqua 2px solid; */
-    /* outline-ra */
 }
 
 .data .registers .twocolumns {
-    /* background-color: red; */
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }

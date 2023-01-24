@@ -25,7 +25,6 @@ public class Display {
         // Gets the byte from address in register I
         int address = programState.getRegister(REGISTER_I);
         boolean VFlag = false;
-//        System.out.println("Display called with " + VX + " " + VY + " " + N);
         for (int i = 0; i < N; ++i) {
             // Finds each bit of the byte and stores them
             // in lsb_array. The 0th position contains
@@ -36,7 +35,6 @@ public class Display {
                 lsb_array[ix] = b % 2;
                 b = (b >> 1);
             }
-//            System.out.println("Com " + Integer.toBinaryString(b));
             for (int j = 0; j < 8; ++j) {
                 if (lsb_array[8 - j - 1] == 1) {     // Reversing the array order to get the msb first
                     if (VY + i >= Constants.HEIGHT_IN_PIXELS || VX + j >= Constants.WIDTH_IN_PIXELS) continue;
@@ -52,7 +50,6 @@ public class Display {
             }
         }
         programState.setRegister(0xF, VFlag ? 1 : 0);   // Stores VFlag in VF register
-//        programState.printDisplayMatrix();
         programState.incrementCounter();
         programState.updateScreen();
     }

@@ -1,18 +1,15 @@
 package org.example;
 
 import java.util.Arrays;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NonNull;
 
 import java.util.ArrayList;
 import lombok.Setter;
 
-
 import static org.example.Constants.REGISTER_I;
 import static org.example.Constants.REGISTER_NUMBER;
 
-//@Data
 public class Registers {
     /**
      * Array of 17 registers.
@@ -69,11 +66,4 @@ public class Registers {
         }
         return this.getRegister(registerName) == val;
     }
-//    public void printRegisters() {
-//        String s = "";
-//        for (int i = 0; i < this.reg.size(); ++i) {
-//            s += registerNames.get(i) + ": " + this.reg.get(i) + "    ";
-//        }
-//        System.out.println(s);
-//    }
 }
