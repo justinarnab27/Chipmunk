@@ -2,6 +2,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+src/main/java/org/example/sand.java
+src/main/java/org/example/SandCar.java
+src/main/java/org/example/sandClass.java
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
