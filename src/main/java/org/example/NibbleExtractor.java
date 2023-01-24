@@ -33,6 +33,7 @@ import org.example.Instructions.SkipIfNotKey;
 import org.example.Instructions.StoreMemory;
 import org.example.Instructions.SubtractVXFromVY;
 import org.example.Instructions.SubtractVYFromVX;
+import org.example.Instructions.WaitForKey;
 
 public class NibbleExtractor {
     /**
@@ -226,6 +227,7 @@ public class NibbleExtractor {
                         break;
                     case 0x0A:
                         System.out.println("Get key");
+                        WaitForKey.execute(nibbles[1], programState);
                         break;
                     case 0x29:
                         System.out.println("Font character");

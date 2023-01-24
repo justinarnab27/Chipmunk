@@ -67,7 +67,7 @@ public class ProgramState {
         this.delayTimer = new DelayTimer();
         this.soundTimer = new SoundTimer();
         timer.schedule(delayTimer, 0, 17);
-        timer.schedule(soundTimer, 0, 17);
+        timer.schedule(soundTimer, 0, 5);
         if (!debugMode) {
             SwingUtilities.invokeLater(() -> this.displayCanvas.createAndShowGui());    // Creates gui
         }

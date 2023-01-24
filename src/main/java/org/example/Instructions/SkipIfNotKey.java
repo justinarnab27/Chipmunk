@@ -8,6 +8,7 @@ public class SkipIfNotKey {
     private SkipIfNotKey() {}
 
     public static void execute(@NonNull final int X, @NonNull final ProgramState programState) {
+        // Skips the next instruction, if key being pressed is NOT equal to VX
         if (programState.getRegister(X) != programState.getKeyBeingPressed()) {
             programState.incrementCounter();
         }
